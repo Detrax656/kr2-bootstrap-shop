@@ -15,7 +15,7 @@
 
   --color-bg-rgb: 29, 38, 52;
   --color-bg-dark-rgb: 20,27,38;
-  --color-text-rgb: 255,55,255;
+  --color-text-rgb: 255, 255, 255;
   --color-primary-rgb:216, 39, 83;
   --color-primary-light-rgb:255, 131, 162;
   --color-accent-rgb: 18, 212, 89;
@@ -49,6 +49,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Чтобы закреплённое меню не закрывало заголовки при переходе по ссылкам */
+  scroll-padding-top: 5rem;
 }
 
 body {
@@ -73,5 +75,53 @@ body {
 
 .card-img-top {
   height: 180px;
+  object-fit: cover;
+}
+
+
+/* ===============================
+   3. Кнопка «Наверх»
+   =============================== */
+
+.to-top {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 1030;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  font-size: 1.5rem;
+  text-decoration: none;
+  /* По умолчанию кнопка скрыта */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s, background-color 0.2s;
+}
+
+.to-top:hover {
+  background-color: var(--color-primary-dark);
+  color: var(--color-text);
+}
+
+/* Этот класс добавляет JS, когда страница прокручена вниз */
+.to-top--visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* ===============================
+   4. Главная страница
+   =============================== */
+
+.hero-image {
+  width: 100%;
+  max-height: 420px;
   object-fit: cover;
 }

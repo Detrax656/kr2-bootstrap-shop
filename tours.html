@@ -4,40 +4,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Главная страница Турагенства Роза Ветров">
-  <title>Главная — Роза Ветров</title>
+  <meta name="description" content="Каталог туров в Мексику: подбор по направлению, датам и бюджету">
+  <title>Туры в Мексику | Роза ветров</title>
+  <link rel="icon" type="image/png" href="images/logo.png">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/custom.css">
   <script src="js/main.js" defer></script>
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Турагенство">
-  <meta property="og:description" content="Учебный frontend-проект Турагенства Роза Ветров">
-  <meta property="og:image" content="https://detrax656.github.io/kr1-html-css-shop/images/preview.jpg">
+  <meta property="og:title" content="Туры в Мексику | Роза ветров">
+  <meta property="og:description" content="Каталог туров в Мексику: подбор по направлению, датам и бюджету">
+  <meta property="og:image" content="https://detrax656.github.io/kr2-bootstrap-shop/images/preview.jpg">
 </head>
 
 <body>
-  <header class="bg-primary text-white py-4">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-12 col-md-8">
-          <h1 class="h3 mb-1">Турагенство Роза Ветров</h1>
-          <p class="mb-0 opacity-75">
-            Турагенство Роза Ветров
-          </p>
-        </div>
-
-        <div class="col-12 col-md-4 text-md-end mt-3 mt-md-0">
-          <span class="badge bg-light text-primary">
-            Роза Ветров
-          </span>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">Турагенство Роза Ветров</a>
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <img src="images/logo.png" alt="Логотип агентства «Роза ветров»" width="36" height="36" class="rounded-circle">
+        <span>Роза ветров</span>
+      </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
         aria-controls="mainNavbar" aria-expanded="false" aria-label="Переключить навигацию">
@@ -45,117 +30,258 @@
       </button>
 
       <div class="collapse navbar-collapse" id="mainNavbar">
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link" href="index.html">Главная</a>
           </li>
-
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="tours.html">Каталог</a>
+            <a class="nav-link active" aria-current="page" href="tours.html">Туры</a>
           </li>
-
           <li class="nav-item">
-            <a class="nav-link" href="tour.html">Тур</a>
+            <a class="nav-link" href="booking.html">Бронирование</a>
           </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="booking.html">Заявка</a>
-          </li>
-
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Дополнительно
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Направления
             </a>
             <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="tours.html?dest=cancun">Канкун</a></li>
+              <li><a class="dropdown-item" href="tours.html?dest=mexico-city">Мехико</a></li>
+              <li><a class="dropdown-item" href="tours.html?dest=oaxaca">Оахака</a></li>
+              <li><a class="dropdown-item" href="tours.html?dest=tulum">Тулум</a></li>
+              <li><a class="dropdown-item" href="tours.html?dest=yucatan">Юкатан</a></li>
+              <li><a class="dropdown-item" href="tours.html?dest=chiapas">Чьяпас</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
               <li><a class="dropdown-item" href="tours.html">Все туры</a></li>
-              <li><a class="dropdown-item" href="booking.html">Оформить заявку</a></li>
-              <li><a class="dropdown-item" href="index.html#popular">Популярное</a></li>
             </ul>
           </li>
         </ul>
+
+        <div class="d-flex flex-column flex-lg-row gap-2">
+          <button class="btn btn-outline-light" type="button" data-bs-toggle="modal"
+            data-bs-target="#managerModal">
+            Вопрос менеджеру
+          </button>
+          <a class="btn btn-primary" href="account.html">
+            Личный кабинет
+            <span class="badge text-bg-light" id="favoritesCount" title="Туров в избранном">0</span>
+          </a>
+        </div>
       </div>
     </div>
   </nav>
 
   <main class="container my-5">
-    <div class="alert alert-info" role="alert">
-      Выберите товар из каталога. Карточки товаров оформлены с помощью компонента Bootstrap `card`.
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
+      <div>
+        <h1 class="h2 mb-1">Туры в Мексику</h1>
+        <p class="mb-0 text-body-secondary">Выберите направление, дату вылета и бюджет.</p>
+      </div>
+      <a class="btn btn-outline-primary" href="booking.html">Оставить заявку</a>
     </div>
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
-      <h1 class="h2 mb-0">Каталог товаров</h1>
-      <a class="btn btn-outline-primary" href="order.html">
-        Оставить заявку
-      </a>
+    <div class="card shadow-sm mb-4">
+      <div class="card-body">
+        <form id="filterForm">
+          <div class="row g-3 align-items-end">
+            <div class="col-12 col-md-6 col-lg-3">
+              <label for="filter-dest" class="form-label">Направление</label>
+              <select id="filter-dest" name="dest" class="form-select">
+                <option value="">Любое направление</option>
+              <option value="cancun">Канкун</option>
+              <option value="mexico-city">Мехико</option>
+              <option value="oaxaca">Оахака</option>
+              <option value="tulum">Тулум и Ривьера-Майя</option>
+              <option value="yucatan">Юкатан</option>
+              <option value="chiapas">Чьяпас</option>
+              </select>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-3">
+              <label for="filter-date" class="form-label">Вылет не раньше</label>
+              <input id="filter-date" name="date" type="date" class="form-control">
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-3">
+              <label for="filter-price" class="form-label">Бюджет</label>
+              <select id="filter-price" name="price" class="form-select">
+                <option value="">Любой</option>
+                <option value="100000">до 100&nbsp;000 ₽</option>
+                <option value="130000">до 130&nbsp;000 ₽</option>
+                <option value="150000">до 150&nbsp;000 ₽</option>
+              </select>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-3 d-flex gap-2">
+              <button class="btn btn-primary flex-grow-1" type="submit">Подобрать</button>
+              <button class="btn btn-outline-secondary" type="button" id="filterReset">Сбросить</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <p class="text-body-secondary">Найдено туров: <span id="foundCount">6</span></p>
+
+    <div class="alert alert-warning d-none" role="alert" id="emptyMessage">
+      По вашему запросу туров не нашлось. Попробуйте изменить дату или бюджет.
     </div>
 
     <div class="row g-4">
-      <div class="col-12 col-md-6 col-lg-4">
+      <div class="col-12 col-md-6 col-lg-4 tour-item" data-dest="cancun" data-date="2027-01-15"
+        data-price="145000">
         <div class="card h-100 shadow-sm">
+          <img src="images/placeholder.jpg" class="card-img-top" alt="Фото тура: Канкун: пляжный отдых">
           <div class="card-body d-flex flex-column">
-            <div class="d-flex justify-content-between align-items-start mb-3">
-              <h2 class="card-title h5">Товар 1</h2>
-              <span class="badge bg-success">Новинка</span>
-            </div>
-
-            <p class="card-text text-muted">
-              Краткое описание учебного товара для каталога.
-            </p>
-
-            <p class="fw-bold fs-5 mt-auto">1000 руб.</p>
-
-            <div class="d-flex gap-2">
-              <a class="btn btn-primary" href="tour.html">Подробнее</a>
-              <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#orderModal">
-                Заказать
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card h-100 shadow-sm">
-          <div class="card-body d-flex flex-column">
-            <div class="d-flex justify-content-between align-items-start mb-3">
-              <h2 class="card-title h5">Товар 2</h2>
+            <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+              <h2 class="card-title h5">Канкун: пляжный отдых</h2>
               <span class="badge bg-warning text-dark">Хит</span>
             </div>
 
-            <p class="card-text text-muted">
-              Краткое описание второго учебного товара.
-            </p>
+            <p class="small text-body-secondary mb-2">8 дней, вылет 15.01.2027</p>
+            <p class="card-text">Белый песок, тёплое Карибское море и отель с питанием «всё включено».</p>
 
-            <p class="fw-bold fs-5 mt-auto">1500 руб.</p>
+            <p class="fw-bold fs-5 mt-auto">от 145&nbsp;000 ₽</p>
 
-            <div class="d-flex gap-2">
+            <div class="d-flex flex-wrap gap-2">
               <a class="btn btn-primary" href="tour.html">Подробнее</a>
-              <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#orderModal">
-                Заказать
+              <button class="btn btn-outline-primary favorite-btn" type="button" data-id="cancun"
+                data-title="Канкун: пляжный отдых" data-price="145000" data-image="images/placeholder.jpg"
+                data-meta="8 дней, вылет 15.01.2027" aria-pressed="false">
+                &#9825; В избранное
               </button>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="col-12 col-md-6 col-lg-4">
+      <div class="col-12 col-md-6 col-lg-4 tour-item" data-dest="mexico-city" data-date="2027-02-05"
+        data-price="118000">
         <div class="card h-100 shadow-sm">
+          <img src="images/placeholder2.jpg" class="card-img-top" alt="Фото тура: Мехико и Теотиуакан">
           <div class="card-body d-flex flex-column">
-            <div class="d-flex justify-content-between align-items-start mb-3">
-              <h2 class="card-title h5">Товар 3</h2>
+            <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+              <h2 class="card-title h5">Мехико и Теотиуакан</h2>
+              <span class="badge bg-success">Новинка</span>
+            </div>
+
+            <p class="small text-body-secondary mb-2">7 дней, вылет 05.02.2027</p>
+            <p class="card-text">Столица Мексики, площадь Сокало, музеи и экскурсия к пирамидам Теотиуакана.</p>
+
+            <p class="fw-bold fs-5 mt-auto">от 118&nbsp;000 ₽</p>
+
+            <div class="d-flex flex-wrap gap-2">
+              <a class="btn btn-primary" href="tour.html">Подробнее</a>
+              <button class="btn btn-outline-primary favorite-btn" type="button" data-id="mexico-city"
+                data-title="Мехико и Теотиуакан" data-price="118000" data-image="images/placeholder2.jpg"
+                data-meta="7 дней, вылет 05.02.2027" aria-pressed="false">
+                &#9825; В избранное
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 tour-item" data-dest="oaxaca" data-date="2027-02-20"
+        data-price="98000">
+        <div class="card h-100 shadow-sm">
+          <img src="images/placeholder.jpg" class="card-img-top" alt="Фото тура: Оахака: культура и кухня">
+          <div class="card-body d-flex flex-column">
+            <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+              <h2 class="card-title h5">Оахака: культура и кухня</h2>
               <span class="badge bg-danger">Скидка</span>
             </div>
 
-            <p class="card-text text-muted">
-              Краткое описание третьего учебного товара.
-            </p>
+            <p class="small text-body-secondary mb-2">6 дней, вылет 20.02.2027</p>
+            <p class="card-text">Яркие рынки, мастер-классы по местной кухне и знакомство с традиционными ремёслами.</p>
 
-            <p class="fw-bold fs-5 mt-auto">2000 руб.</p>
+            <p class="fw-bold fs-5 mt-auto">от 98&nbsp;000 ₽</p>
 
-            <div class="d-flex gap-2">
+            <div class="d-flex flex-wrap gap-2">
               <a class="btn btn-primary" href="tour.html">Подробнее</a>
-              <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#orderModal">
-                Заказать
+              <button class="btn btn-outline-primary favorite-btn" type="button" data-id="oaxaca"
+                data-title="Оахака: культура и кухня" data-price="98000" data-image="images/placeholder.jpg"
+                data-meta="6 дней, вылет 20.02.2027" aria-pressed="false">
+                &#9825; В избранное
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 tour-item" data-dest="tulum" data-date="2027-01-28"
+        data-price="162000">
+        <div class="card h-100 shadow-sm">
+          <img src="images/placeholder2.jpg" class="card-img-top" alt="Фото тура: Тулум и Ривьера-Майя">
+          <div class="card-body d-flex flex-column">
+            <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+              <h2 class="card-title h5">Тулум и Ривьера-Майя</h2>
+              <span class="badge bg-danger">Горящий</span>
+            </div>
+
+            <p class="small text-body-secondary mb-2">9 дней, вылет 28.01.2027</p>
+            <p class="card-text">Руины майя на берегу моря, купание в сенотах и отдых на пляжах Ривьеры-Майя.</p>
+
+            <p class="fw-bold fs-5 mt-auto">от 162&nbsp;000 ₽</p>
+
+            <div class="d-flex flex-wrap gap-2">
+              <a class="btn btn-primary" href="tour.html">Подробнее</a>
+              <button class="btn btn-outline-primary favorite-btn" type="button" data-id="tulum"
+                data-title="Тулум и Ривьера-Майя" data-price="162000" data-image="images/placeholder2.jpg"
+                data-meta="9 дней, вылет 28.01.2027" aria-pressed="false">
+                &#9825; В избранное
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 tour-item" data-dest="yucatan" data-date="2027-03-12"
+        data-price="132000">
+        <div class="card h-100 shadow-sm">
+          <img src="images/placeholder.jpg" class="card-img-top" alt="Фото тура: Юкатан: Мерида и Чичен-Ица">
+          <div class="card-body d-flex flex-column">
+            <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+              <h2 class="card-title h5">Юкатан: Мерида и Чичен-Ица</h2>
+              <span class="badge bg-secondary">Экскурсии</span>
+            </div>
+
+            <p class="small text-body-secondary mb-2">8 дней, вылет 12.03.2027</p>
+            <p class="card-text">Колониальная Мерида и один из самых известных городов майя, Чичен-Ица.</p>
+
+            <p class="fw-bold fs-5 mt-auto">от 132&nbsp;000 ₽</p>
+
+            <div class="d-flex flex-wrap gap-2">
+              <a class="btn btn-primary" href="tour.html">Подробнее</a>
+              <button class="btn btn-outline-primary favorite-btn" type="button" data-id="yucatan"
+                data-title="Юкатан: Мерида и Чичен-Ица" data-price="132000" data-image="images/placeholder.jpg"
+                data-meta="8 дней, вылет 12.03.2027" aria-pressed="false">
+                &#9825; В избранное
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 tour-item" data-dest="chiapas" data-date="2027-03-26"
+        data-price="125000">
+        <div class="card h-100 shadow-sm">
+          <img src="images/placeholder2.jpg" class="card-img-top" alt="Фото тура: Чьяпас: джунгли и каньон">
+          <div class="card-body d-flex flex-column">
+            <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+              <h2 class="card-title h5">Чьяпас: джунгли и каньон</h2>
+              <span class="badge bg-secondary">Приключения</span>
+            </div>
+
+            <p class="small text-body-secondary mb-2">7 дней, вылет 26.03.2027</p>
+            <p class="card-text">Город Сан-Кристобаль-де-лас-Касас, водопады и прогулка на лодке по каньону Сумидеро.</p>
+
+            <p class="fw-bold fs-5 mt-auto">от 125&nbsp;000 ₽</p>
+
+            <div class="d-flex flex-wrap gap-2">
+              <a class="btn btn-primary" href="tour.html">Подробнее</a>
+              <button class="btn btn-outline-primary favorite-btn" type="button" data-id="chiapas"
+                data-title="Чьяпас: джунгли и каньон" data-price="125000" data-image="images/placeholder2.jpg"
+                data-meta="7 дней, вылет 26.03.2027" aria-pressed="false">
+                &#9825; В избранное
               </button>
             </div>
           </div>
@@ -163,114 +289,190 @@
       </div>
     </div>
 
-    <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2 class="modal-title h5" id="orderModalLabel">
-              Быстрая заявка
-            </h2>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-          </div>
-
-          <div class="modal-body">
-            <p class="text-muted">
-              Оставьте контактные данные, и менеджер свяжется с вами.
-            </p>
-
-            <form>
-              <div class="mb-3">
-                <label for="modal-name" class="form-label">Имя</label>
-                <input id="modal-name" type="text" class="form-control" required>
-              </div>
-
-              <div class="mb-3">
-                <label for="modal-phone" class="form-label">Телефон</label>
-                <input id="modal-phone" type="tel" class="form-control" required>
-              </div>
-
-              <div class="form-check mb-3">
-                <input id="modal-agree" class="form-check-input" type="checkbox" required>
-                <label class="form-check-label" for="modal-agree">
-                  Согласен на обработку данных
-                </label>
-              </div>
-            </form>
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-              Закрыть
-            </button>
-            <button type="button" class="btn btn-primary">
-              Отправить
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <section class="container my-5">
+    <section class="my-5">
       <h2 class="h4 mb-3">Частые вопросы</h2>
 
       <div class="accordion" id="faqAccordion">
         <div class="accordion-item">
           <h3 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne"
-              aria-expanded="true" aria-controls="faqOne">
-              Можно ли оформить заявку без регистрации?
+            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+              data-bs-target="#faq0" aria-expanded="true" aria-controls="faq0">
+              Как забронировать тур?
             </button>
           </h3>
-          <div id="faqOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+          <div id="faq0" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
             <div class="accordion-body">
-              Да, в учебном проекте заявка оформляется без регистрации.
+              Выберите тур в каталоге, откройте его страницу и нажмите кнопку бронирования. Затем заполните форму, и менеджер свяжется с вами.
             </div>
           </div>
         </div>
-
         <div class="accordion-item">
           <h3 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo"
-              aria-expanded="false" aria-controls="faqTwo">
-              Где используется Bootstrap?
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">
+              Можно ли добавить услуги к туру?
             </button>
           </h3>
-          <div id="faqTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+          <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
             <div class="accordion-body">
-              Bootstrap используется для сетки, карточек, форм, навигации, сообщений и модальных окон.
+              Да. В форме бронирования можно отметить трансфер, страховку и экскурсии, а итоговая сумма пересчитается сама.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h3 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+              Где найти понравившиеся туры?
+            </button>
+          </h3>
+          <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Нажмите «В избранное» на карточке тура. Он появится в личном кабинете на вкладке «Избранное».
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h3 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+              Как задать вопрос менеджеру?
+            </button>
+          </h3>
+          <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Нажмите кнопку «Вопрос менеджеру» в меню сверху, она есть на каждой странице сайта.
             </div>
           </div>
         </div>
       </div>
     </section>
-
   </main>
 
-  <footer class="bg-dark text-white py-4 mt-5">
+  <footer class="bg-dark text-white pt-5 pb-3 mt-5">
     <div class="container">
-      <div class="row align-items-center g-3">
-        <div class="col-12 col-md-6">
-          <p class="mb-0">
-            &copy; Турагенство Роза Ветров.
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-4">
+          <a class="d-flex align-items-center gap-2 text-white text-decoration-none mb-3" href="index.html">
+            <img src="images/logo.png" alt="Логотип агентства «Роза ветров»" width="40" height="40"
+              class="rounded-circle">
+            <span class="h5 mb-0">Роза ветров</span>
+          </a>
+          <p class="text-white-50">
+            Турагентство, которое организует поездки в Мексику: пляжи Карибского моря, города майя,
+            колониальные центры и местная кухня. Подберём тур, поможем с бронированием и услугами.
           </p>
+          <div class="d-flex gap-3">
+            <a class="link-light link-underline-opacity-0" href="#" aria-label="Telegram">Telegram</a>
+            <a class="link-light link-underline-opacity-0" href="#" aria-label="ВКонтакте">ВКонтакте</a>
+            <a class="link-light link-underline-opacity-0" href="#" aria-label="YouTube">YouTube</a>
+          </div>
         </div>
 
-        <div class="col-12 col-md-6 text-md-end">
-          <a class="text-white text-decoration-none me-3" href="tours.html">
-            Каталог
-          </a>
-          <a class="text-white text-decoration-none" href="booking.html">
-            Букинг
-          </a>
+        <div class="col-6 col-lg-2">
+          <h2 class="h6 text-uppercase">Навигация</h2>
+          <ul class="list-unstyled mb-0">
+            <li><a class="link-light link-underline-opacity-0" href="index.html">Главная</a></li>
+            <li><a class="link-light link-underline-opacity-0" href="tours.html">Туры</a></li>
+            <li><a class="link-light link-underline-opacity-0" href="booking.html">Бронирование</a></li>
+            <li><a class="link-light link-underline-opacity-0" href="account.html">Личный кабинет</a></li>
+          </ul>
         </div>
+
+        <div class="col-6 col-lg-2">
+          <h2 class="h6 text-uppercase">Направления</h2>
+          <ul class="list-unstyled mb-0">
+            <li><a class="link-light link-underline-opacity-0" href="tours.html?dest=cancun">Канкун</a></li>
+            <li><a class="link-light link-underline-opacity-0" href="tours.html?dest=mexico-city">Мехико</a></li>
+            <li><a class="link-light link-underline-opacity-0" href="tours.html?dest=oaxaca">Оахака</a></li>
+            <li><a class="link-light link-underline-opacity-0" href="tours.html?dest=tulum">Тулум</a></li>
+            <li><a class="link-light link-underline-opacity-0" href="tours.html?dest=yucatan">Юкатан</a></li>
+            <li><a class="link-light link-underline-opacity-0" href="tours.html?dest=chiapas">Чьяпас</a></li>
+          </ul>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+          <h2 class="h6 text-uppercase">Контакты</h2>
+          <address class="mb-0 text-white-50">
+            г. Москва, ул. Примерная, д. 1, офис 10<br>
+            Телефон: <a class="link-light link-underline-opacity-0" href="tel:+79000000000">+7 (900) 000-00-00</a><br>
+            E-mail: <a class="link-light link-underline-opacity-0"
+              href="mailto:info@rosa-vetrov.example">info@rosa-vetrov.example</a><br>
+            Пн-Пт: 10:00-19:00, Сб: 11:00-16:00, Вс: выходной
+          </address>
+        </div>
+      </div>
+
+      <hr class="border-secondary mt-4">
+
+      <div class="d-flex flex-column flex-md-row justify-content-between gap-2 small text-white-50">
+        <span>&copy; 2026 Турагентство «Роза ветров». Все права защищены.</span>
+        <span>Учебный проект: Корабельников Глеб, группа ЭФБО-07-25</span>
       </div>
     </div>
   </footer>
 
-  <a class="to-top" href="#">Наверх</a>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-  </script>
+  <!-- Модальное окно «Вопрос менеджеру», общее для всех страниц -->
+  <div class="modal fade" id="managerModal" tabindex="-1" aria-labelledby="managerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="managerModalLabel">Вопрос менеджеру</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
 
+        <form id="managerForm" novalidate>
+          <div class="modal-body">
+            <p class="text-body-secondary">
+              Напишите, что хотите уточнить, и менеджер ответит в рабочее время.
+            </p>
+
+            <div class="mb-3">
+              <label for="manager-name" class="form-label">Имя *</label>
+              <input id="manager-name" name="name" type="text" class="form-control" required>
+              <div class="invalid-feedback">Введите имя.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="manager-contact" class="form-label">E-mail *</label>
+              <input id="manager-contact" name="email" type="email" class="form-control" required>
+              <div class="invalid-feedback">Введите корректный e-mail.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="manager-question" class="form-label">Ваш вопрос *</label>
+              <textarea id="manager-question" name="question" class="form-control" rows="4" required></textarea>
+              <div class="invalid-feedback">Напишите вопрос.</div>
+            </div>
+
+            <div class="form-check">
+              <input id="manager-agree" class="form-check-input" type="checkbox" required>
+              <label class="form-check-label" for="manager-agree">
+                Согласен на обработку данных *
+              </label>
+              <div class="invalid-feedback">Нужно ваше согласие.</div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            <button type="submit" class="btn btn-primary">Отправить</button>
+          </div>
+        </form>
+
+        <div class="modal-body d-none" id="managerSuccess">
+          <div class="alert alert-success mb-3" role="alert">
+            Спасибо! Вопрос отправлен, менеджер ответит вам на e-mail.
+          </div>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Закрыть</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a class="to-top" href="#" id="toTop" aria-label="Наверх" title="Наверх">&uarr;</a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
