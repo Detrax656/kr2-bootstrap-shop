@@ -30,4 +30,13 @@ body {
 
 /* <div class="placeholder-box p-5 bg-light border rounded text-center">
   ...
-</div>
+</div> */
+
+.placeholder-image {
+  min-height: 320px;
+}
+
+.card-img-top {
+  height: 180px;
+  object-fit: cover;
+}

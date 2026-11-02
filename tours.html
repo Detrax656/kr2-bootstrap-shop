@@ -1,232 +1,276 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-bs-theme="dark">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Каталог товаров учебного интернет-магазина.">
-  <title>Каталог товаров — Учебный интернет-магазин</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="Главная страница Турагенства Роза Ветров">
+  <title>Главная — Роза Ветров</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/custom.css">
+  <script src="js/main.js" defer></script>
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Учебный интернет-магазин">
-  <meta property="og:description" content="Учебный frontend-проект интернет-магазина.">
+  <meta property="og:title" content="Турагенство">
+  <meta property="og:description" content="Учебный frontend-проект Турагенства Роза Ветров">
   <meta property="og:image" content="https://detrax656.github.io/kr1-html-css-shop/images/preview.jpg">
 </head>
+
 <body>
-        <header class="site-header">
-          <div class="site-header__inner">
-            <a class="site-header__logo" href="index.html">ShopProject</a>
-        
-            <nav class="site-nav" aria-label="Основная навигация">
-              <ul class="site-nav__list">
-                <li class="site-nav__item">
-                  <a class="site-nav__link" href="index.html">
-                    Главная
-                  </a>
-                </li>
-                <li class="site-nav__item">
-                  <a class="site-nav__link site-nav__link--active" href="catalog.html">Каталог</a>
-                </li>
-                <li class="site-nav__item">
-                  <a class="site-nav__link" href="product.html">Товар</a>
-                </li>
-                <li class="site-nav__item">
-                  <a class="site-nav__link" href="order.html">Заказ</a>
-                </li>
-                <li class="site-nav__item">
-                  <a class="site-nav__link" href="contacts.html">Контакты</a>
-                </li>
-                <li class="site-nav__item">
-                  <a class="site-nav__link" href="index.html#popular">
-                    Популярные товары
-                  </a>
-                </li>
-                <li class="site-nav__item">
-                  <a class="site-nav__link" href="index.html#advantages">Преимущества</a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </header>
-
-  <main>
-    <nav class="breadcrumbs" aria-label="Хлебные крошки">
-      <a class="breadcrumbs__link" href="index.html">Главная</a>
-      <span class="breadcrumbs__current">Каталог</span>
-    </nav>
-
-    <section class="section">
-      <h1>Каталог товаров</h1>
-      <p>
-        На этой странице представлен учебный каталог товаров с фильтрами.
-        Карточки бывают нескольких видов: новинки, хиты, скидки и товары,
-        которых нет в наличии.
-      </p>
-    
-    <section class="catalog-layout">
-      <aside class="catalog-filters">
-        <h2>Фильтры</h2>
-
-        <form class="catalog-filters__form" action="#" method="get">
-          <fieldset class="catalog-filters__group">
-            <legend class="catalog-filters__legend">Категория</legend>
-
-            <label class="catalog-filters__label">
-              <input type="checkbox" name="category" value="all">
-              Все товары
-            </label>
-
-            <label class="catalog-filters__label">
-              <input type="checkbox" name="category" value="popular">
-              Популярные
-            </label>
-
-            <label class="catalog-filters__label">
-              <input type="checkbox" name="category" value="new">
-              Новинки
-            </label>
-
-            <label class="catalog-filters__label">
-              <input type="checkbox" name="category" value="sale">
-              Акции
-            </label>
-          </fieldset>
-
-          <fieldset class="catalog-filters__group">
-            <legend class="catalog-filters__legend">Цена</legend>
-
-            <label class="catalog-filters__label" for="price-from">От</label>
-            <input class="catalog-filters__input" id="price-from" name="price-from" type="number" min="0" placeholder="0">
-
-            <label class="catalog-filters__label" for="price-to">До</label>
-            <input class="catalog-filters__input" id="price-to" name="price-to" type="number" min="0" placeholder="5000">
-          </fieldset>
-
-          <button class="button" type="submit">Применить</button>
-        </form>
-      </aside>
-
-      <section class="catalog-products">
-        <h2 class="section__title">Список товаров</h2>
-
-        <div class="products-grid">
-          <article class="product-card product-card--new">
-            <span class="product-card__badge">Новинка</span>
-            <h3 class="product-card__title">Товар 1</h3>
-            <p class="product-card__category">Категория: Новинки</p>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 1000 руб.</p>
-            <a class="button product-card__button" href="product.html">Подробнее</a>
-          </article>
-
-          <article class="product-card product-card--hit">
-            <span class="product-card__badge">Хит</span>
-            <h3 class="product-card__title">Товар 2</h3>
-            <p class="product-card__category">Категория: Популярные</p>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 1500 руб.</p>
-            <a class="button product-card__button" href="product.html">Подробнее</a>
-          </article>
-
-          <article class="product-card product-card--discount">
-            <span class="product-card__badge">Скидка</span>
-            <h3 class="product-card__title">Товар 3</h3>
-            <p class="product-card__category">Категория: Акции</p>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 2000 руб.</p>
-            <a class="button product-card__button" href="product.html">Подробнее</a>
-          </article>
-
-          <article class="product-card product-card--new">
-            <span class="product-card__badge">Новинка</span>
-            <h3 class="product-card__title">Товар 4</h3>
-            <p class="product-card__category">Категория: Новинки</p>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 2500 руб.</p>
-            <a class="button product-card__button" href="product.html">Подробнее</a>
-          </article>
-
-          <article class="product-card product-card--hit">
-            <span class="product-card__badge">Хит</span>
-            <h3 class="product-card__title">Товар 5</h3>
-            <p class="product-card__category">Категория: Популярные</p>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 3000 руб.</p>
-            <a class="button product-card__button" href="product.html">Подробнее</a>
-          </article>
-
-          <article class="product-card product-card--discount">
-            <span class="product-card__badge">Скидка</span>
-            <h3 class="product-card__title">Товар 6</h3>
-            <p class="product-card__category">Категория: Акции</p>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 6700 руб.</p>
-            <a class="button product-card__button" href="product.html">Подробнее</a>
-          </article>
-
-          <article class="product-card">
-            <h3 class="product-card__title">Товар 7</h3>
-            <p class="product-card__category">Категория: Учебные товары</p>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 4000 руб.</p>
-            <a class="button product-card__button" href="product.html">Подробнее</a>
-          </article>
-
-          <article class="product-card product-card--new">
-            <span class="product-card__badge">Новинка</span>
-            <h3 class="product-card__title">Товар 8</h3>
-            <p class="product-card__category">Категория: Новинки</p>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 6000 руб.</p>
-            <a class="button product-card__button" href="product.html">Подробнее</a>
-          </article>
-
-          <article class="product-card product-card--unavailable">
-            <span class="product-card__badge">Нет в наличии</span>
-            <h3 class="product-card__title">Товар 9</h3>
-            <p class="product-card__category">Категория: Учебные товары</p>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 4500 руб.</p>
-            <button class="button product-card__button" type="button" disabled>Недоступно</button>
-          </article>
-
-          <article class="product-card product-card--unavailable">
-            <span class="product-card__badge">Нет в наличии</span>
-            <h3 class="product-card__title">Товар 10</h3>
-            <p class="product-card__category">Категория: Учебные товары</p>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 5000 руб.</p>
-            <button class="button product-card__button" type="button" disabled>Недоступно</button>
-          </article>
-
-          <article class="product-card">
-            <h3 class="product-card__title">Товар 11</h3>
-            <p class="product-card__category">Категория: Учебные товары</p>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 9999 руб.</p>
-            <a class="button product-card__button" href="product.html">Подробнее</a>
-          </article>
-
-          <article class="product-card product-card--unavailable">
-            <span class="product-card__badge">Нет в наличии</span>
-            <h3 class="product-card__title">Товар 12</h3>
-            <p class="product-card__category">Категория: Учебные товары</p>
-            <p class="product-card__description">Краткое описание учебного товара.</p>
-            <p class="product-card__price">Цена: 6767 руб.</p>
-            <button class="button product-card__button" type="button" disabled>Недоступно</button>
-          </article>
-
+  <header class="bg-primary text-white py-4">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-8">
+          <h1 class="h3 mb-1">Турагенство Роза Ветров</h1>
+          <p class="mb-0 opacity-75">
+            Турагенство Роза Ветров
+          </p>
         </div>
-      </section>
+
+        <div class="col-12 col-md-4 text-md-end mt-3 mt-md-0">
+          <span class="badge bg-light text-primary">
+            Роза Ветров
+          </span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Турагенство Роза Ветров</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+        aria-controls="mainNavbar" aria-expanded="false" aria-label="Переключить навигацию">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Главная</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="tours.html">Каталог</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="tour.html">Тур</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="booking.html">Заявка</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Дополнительно
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="tours.html">Все туры</a></li>
+              <li><a class="dropdown-item" href="booking.html">Оформить заявку</a></li>
+              <li><a class="dropdown-item" href="index.html#popular">Популярное</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-5">
+    <div class="alert alert-info" role="alert">
+      Выберите товар из каталога. Карточки товаров оформлены с помощью компонента Bootstrap `card`.
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1 class="h2 mb-0">Каталог товаров</h1>
+      <a class="btn btn-outline-primary" href="order.html">
+        Оставить заявку
+      </a>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body d-flex flex-column">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h2 class="card-title h5">Товар 1</h2>
+              <span class="badge bg-success">Новинка</span>
+            </div>
+
+            <p class="card-text text-muted">
+              Краткое описание учебного товара для каталога.
+            </p>
+
+            <p class="fw-bold fs-5 mt-auto">1000 руб.</p>
+
+            <div class="d-flex gap-2">
+              <a class="btn btn-primary" href="tour.html">Подробнее</a>
+              <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#orderModal">
+                Заказать
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body d-flex flex-column">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h2 class="card-title h5">Товар 2</h2>
+              <span class="badge bg-warning text-dark">Хит</span>
+            </div>
+
+            <p class="card-text text-muted">
+              Краткое описание второго учебного товара.
+            </p>
+
+            <p class="fw-bold fs-5 mt-auto">1500 руб.</p>
+
+            <div class="d-flex gap-2">
+              <a class="btn btn-primary" href="tour.html">Подробнее</a>
+              <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#orderModal">
+                Заказать
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body d-flex flex-column">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h2 class="card-title h5">Товар 3</h2>
+              <span class="badge bg-danger">Скидка</span>
+            </div>
+
+            <p class="card-text text-muted">
+              Краткое описание третьего учебного товара.
+            </p>
+
+            <p class="fw-bold fs-5 mt-auto">2000 руб.</p>
+
+            <div class="d-flex gap-2">
+              <a class="btn btn-primary" href="tour.html">Подробнее</a>
+              <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#orderModal">
+                Заказать
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title h5" id="orderModalLabel">
+              Быстрая заявка
+            </h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+          </div>
+
+          <div class="modal-body">
+            <p class="text-muted">
+              Оставьте контактные данные, и менеджер свяжется с вами.
+            </p>
+
+            <form>
+              <div class="mb-3">
+                <label for="modal-name" class="form-label">Имя</label>
+                <input id="modal-name" type="text" class="form-control" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="modal-phone" class="form-label">Телефон</label>
+                <input id="modal-phone" type="tel" class="form-control" required>
+              </div>
+
+              <div class="form-check mb-3">
+                <input id="modal-agree" class="form-check-input" type="checkbox" required>
+                <label class="form-check-label" for="modal-agree">
+                  Согласен на обработку данных
+                </label>
+              </div>
+            </form>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Закрыть
+            </button>
+            <button type="button" class="btn btn-primary">
+              Отправить
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="container my-5">
+      <h2 class="h4 mb-3">Частые вопросы</h2>
+
+      <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+          <h3 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne"
+              aria-expanded="true" aria-controls="faqOne">
+              Можно ли оформить заявку без регистрации?
+            </button>
+          </h3>
+          <div id="faqOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Да, в учебном проекте заявка оформляется без регистрации.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h3 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo"
+              aria-expanded="false" aria-controls="faqTwo">
+              Где используется Bootstrap?
+            </button>
+          </h3>
+          <div id="faqTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Bootstrap используется для сетки, карточек, форм, навигации, сообщений и модальных окон.
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-    </section>
+
   </main>
 
-  <footer class="site-footer">
-    <p class="site-footer__text">&copy; 2026 Учебный проект. Все права защищены.</p>
-    <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
+  <footer class="bg-dark text-white py-4 mt-5">
+    <div class="container">
+      <div class="row align-items-center g-3">
+        <div class="col-12 col-md-6">
+          <p class="mb-0">
+            &copy; Турагенство Роза Ветров.
+          </p>
+        </div>
+
+        <div class="col-12 col-md-6 text-md-end">
+          <a class="text-white text-decoration-none me-3" href="tours.html">
+            Каталог
+          </a>
+          <a class="text-white text-decoration-none" href="booking.html">
+            Букинг
+          </a>
+        </div>
+      </div>
+    </div>
   </footer>
 
   <a class="to-top" href="#">Наверх</a>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+  </script>
 
 </body>
+
 </html>
