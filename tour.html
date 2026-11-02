@@ -78,64 +78,116 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
-        <li class="breadcrumb-item"><a href="tours.html">Каталог</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Товар 1</li>
+        <li class="breadcrumb-item"><a href="tours.html">Туры</a></li>
+        <li class="breadcrumb-item active" aria-current="page" id="tourCrumb">Тур</li>
       </ol>
     </nav>
 
     <div class="row g-4">
-      <div class="col-12 col-lg-6">
-        <div class="card shadow-sm">
-          <div class="placeholder-image bg-light border rounded d-flex align-items-center justify-content-center">
-            <span class="text-muted">Изображение товара</span>
+      <div class="col-12 col-lg-7">
+        <div id="tourCarousel" class="carousel slide tour-carousel shadow-sm rounded overflow-hidden"
+          data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#tourCarousel" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Фото 1"></button>
+            <button type="button" data-bs-target="#tourCarousel" data-bs-slide-to="1" aria-label="Фото 2"></button>
+            <button type="button" data-bs-target="#tourCarousel" data-bs-slide-to="2" aria-label="Фото 3"></button>
           </div>
+
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="images/placeholder.jpg" class="d-block w-100" alt="Фото тура 1">
+            </div>
+            <div class="carousel-item">
+              <img src="images/placeholder2.jpg" class="d-block w-100" alt="Фото тура 2">
+            </div>
+            <div class="carousel-item">
+              <img src="images/placeholder.jpg" class="d-block w-100" alt="Фото тура 3">
+            </div>
+          </div>
+
+          <button class="carousel-control-prev" type="button" data-bs-target="#tourCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Назад</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#tourCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Вперёд</span>
+          </button>
         </div>
       </div>
 
-      <div class="col-12 col-lg-6">
-        <span class="badge bg-success mb-3">Новинка</span>
-        <h1 class="h2">Товар 1</h1>
-        <p class="lead text-muted">
-          Подробное описание учебного товара для страницы карточки.
-        </p>
+      <div class="col-12 col-lg-5">
+        <span class="badge bg-success mb-3" id="tourBadge">Хит</span>
+        <h1 class="h2" id="tourTitle">Тур</h1>
+        <p class="text-body-secondary" id="tourMeta"></p>
+        <p class="lead" id="tourText"></p>
+        <p class="fs-3 fw-bold" id="tourPrice"></p>
 
-        <p class="fs-3 fw-bold">1000 руб.</p>
+        <div class="alert alert-warning" role="alert" id="tourSeats"></div>
 
-        <div class="d-flex gap-2 mb-4">
-          <a class="btn btn-primary btn-lg" href="booking.html">
-            Оформить заявку
-          </a>
-          <a class="btn btn-outline-secondary btn-lg" href="tours.html">
-            Назад в каталог
-          </a>
-        </div>
-
-        <div class="alert alert-warning" role="alert">
-          Это учебная карточка товара. Данные используются для демонстрации Bootstrap-компонентов.
+        <div class="d-flex flex-wrap gap-2">
+          <a class="btn btn-accent btn-lg" id="bookLink" href="booking.html">Забронировать</a>
+          <button class="btn btn-outline-primary btn-lg favorite-btn" id="tourFavorite" type="button"
+            aria-pressed="false">
+            &#9825; В избранное
+          </button>
         </div>
       </div>
     </div>
 
     <section class="mt-5">
-      <h2 class="h4 mb-3">Характеристики</h2>
+      <ul class="nav nav-tabs" id="tourTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="tab-desc" data-bs-toggle="tab" data-bs-target="#pane-desc"
+            type="button" role="tab" aria-controls="pane-desc" aria-selected="true">Описание</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="tab-program" data-bs-toggle="tab" data-bs-target="#pane-program"
+            type="button" role="tab" aria-controls="pane-program" aria-selected="false">Программа</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="tab-terms" data-bs-toggle="tab" data-bs-target="#pane-terms"
+            type="button" role="tab" aria-controls="pane-terms" aria-selected="false">Условия</button>
+        </li>
+      </ul>
 
-      <div class="table-responsive">
-        <table class="table table-striped table-bordered align-middle">
-          <tbody>
-            <tr>
-              <th scope="row">Категория</th>
-              <td>Учебные товары</td>
-            </tr>
-            <tr>
-              <th scope="row">Цена</th>
-              <td>1000 руб.</td>
-            </tr>
-            <tr>
-              <th scope="row">Наличие</th>
-              <td>В наличии</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="tab-content border border-top-0 rounded-bottom p-4">
+        <div class="tab-pane fade show active" id="pane-desc" role="tabpanel" aria-labelledby="tab-desc"
+          tabindex="0">
+          <p class="mb-0" id="tourDescription"></p>
+        </div>
+
+        <div class="tab-pane fade" id="pane-program" role="tabpanel" aria-labelledby="tab-program" tabindex="0">
+          <ul class="list-unstyled vstack gap-2 mb-0" id="tourProgram"></ul>
+        </div>
+
+        <div class="tab-pane fade" id="pane-terms" role="tabpanel" aria-labelledby="tab-terms" tabindex="0">
+          <div class="row g-4">
+            <div class="col-12 col-md-6">
+              <h2 class="h5">Что включено в цену</h2>
+              <ul class="mb-0">
+                <li>перелёт Москва - Мексика и обратно;</li>
+                <li>проживание в отеле;</li>
+                <li>питание по программе;</li>
+                <li>сопровождение менеджера.</li>
+              </ul>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <h2 class="h5">Оплачивается отдельно</h2>
+              <ul class="mb-0">
+                <li>трансфер из аэропорта и обратно;</li>
+                <li>медицинская страховка;</li>
+                <li>экскурсии по желанию;</li>
+                <li>личные расходы.</li>
+              </ul>
+              <p class="small text-body-secondary mt-3 mb-0">
+                Трансфер, страховку и экскурсии можно добавить в заявке на странице бронирования.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -220,19 +272,21 @@
 
             <div class="mb-3">
               <label for="manager-name" class="form-label">Имя *</label>
-              <input id="manager-name" name="name" type="text" class="form-control" required>
+              <input id="manager-name" name="name" type="text" class="form-control" placeholder="Иван Иванов" required>
               <div class="invalid-feedback">Введите имя.</div>
             </div>
 
             <div class="mb-3">
               <label for="manager-contact" class="form-label">E-mail *</label>
-              <input id="manager-contact" name="email" type="email" class="form-control" required>
-              <div class="invalid-feedback">Введите корректный e-mail.</div>
+              <input id="manager-contact" name="email" type="email" class="form-control" placeholder="example@mail.ru"
+                pattern="[^@ ]+@[^@ ]+[.][^@ ]+" required>
+              <div class="invalid-feedback">Введите e-mail в формате example@mail.ru.</div>
             </div>
 
             <div class="mb-3">
               <label for="manager-question" class="form-label">Ваш вопрос *</label>
-              <textarea id="manager-question" name="question" class="form-control" rows="4" required></textarea>
+              <textarea id="manager-question" name="question" class="form-control" rows="4"
+                placeholder="Например, можно ли поменять даты вылета?" required></textarea>
               <div class="invalid-feedback">Напишите вопрос.</div>
             </div>
 

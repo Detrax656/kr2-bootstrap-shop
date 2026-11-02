@@ -75,72 +75,155 @@
   </nav>
 
   <main class="container my-5">
-    <div class="row justify-content-center">
+    <h1 class="h2 mb-4">Бронирование тура</h1>
+
+    <div class="row g-4">
       <div class="col-12 col-lg-8">
         <div class="card shadow-sm">
           <div class="card-header bg-primary text-white">
-            <h1 class="h4 mb-0">Форма заявки</h1>
+            <h2 class="h5 mb-0">Заявка на бронирование</h2>
           </div>
 
           <div class="card-body">
-            <div class="alert alert-info" role="alert">
-              Заполните форму. Поля со звёздочкой являются обязательными.
+            <div class="alert alert-primary" role="alert">
+              Заполните форму. Поля со звёздочкой обязательны для заполнения.
             </div>
 
-            <form>
+            <div class="alert alert-success d-none" role="alert" id="bookingSuccess">
+              Заявка отправлена! Менеджер свяжется с вами в течение рабочего дня.
+            </div>
+
+            <form id="bookingForm" class="js-form" data-success="bookingSuccess" novalidate>
               <div class="row g-3">
                 <div class="col-12 col-md-6">
-                  <label for="order-name" class="form-label">Имя *</label>
-                  <input id="order-name" name="name" type="text" class="form-control" required>
+                  <label for="booking-name" class="form-label">Имя *</label>
+                  <input id="booking-name" name="name" type="text" class="form-control"
+                    placeholder="Иван Иванов" required>
+                  <div class="invalid-feedback">Введите имя.</div>
                 </div>
 
                 <div class="col-12 col-md-6">
-                  <label for="order-email" class="form-label">E-mail *</label>
-                  <input id="order-email" name="email" type="email" class="form-control" required>
+                  <label for="booking-email" class="form-label">E-mail *</label>
+                  <input id="booking-email" name="email" type="email" class="form-control"
+                    placeholder="example@mail.ru" pattern="[^@ ]+@[^@ ]+[.][^@ ]+" required>
+                  <div class="invalid-feedback">Введите e-mail в формате example@mail.ru.</div>
                 </div>
 
                 <div class="col-12 col-md-6">
-                  <label for="order-phone" class="form-label">Телефон</label>
+                  <label for="booking-phone" class="form-label">Телефон *</label>
                   <div class="input-group">
                     <span class="input-group-text">+7</span>
-                    <input id="order-phone" name="phone" type="tel" class="form-control" placeholder="900 000-00-00">
+                    <input id="booking-phone" name="phone" type="tel" class="form-control"
+                      placeholder="900 000-00-00" pattern="[0-9 \-]{10,15}" required>
+                    <div class="invalid-feedback">Введите телефон, например 900 000-00-00.</div>
                   </div>
                 </div>
 
                 <div class="col-12 col-md-6">
-                  <label for="order-product" class="form-label">Товар</label>
-                  <select id="order-product" name="product" class="form-select">
-                    <option selected>Выберите товар</option>
-                    <option value="product-1">Товар 1</option>
-                    <option value="product-2">Товар 2</option>
-                    <option value="product-3">Товар 3</option>
+                  <label for="booking-tour" class="form-label">Тур *</label>
+                  <select id="booking-tour" name="tour" class="form-select" required>
+                  <option value="">Выберите тур</option>
+                  <option value="cancun">Канкун: пляжный отдых</option>
+                  <option value="mexico-city">Мехико и Теотиуакан</option>
+                  <option value="oaxaca">Оахака: культура и кухня</option>
+                  <option value="tulum">Тулум и Ривьера-Майя</option>
+                  <option value="yucatan">Юкатан: Мерида и Чичен-Ица</option>
+                  <option value="chiapas">Чьяпас: джунгли и каньон</option>
+                  </select>
+                  <div class="invalid-feedback">Выберите тур.</div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label for="booking-guests" class="form-label">Количество гостей *</label>
+                  <select id="booking-guests" name="guests" class="form-select" required>
+                    <option value="1">1 человек</option>
+                    <option value="2" selected>2 человека</option>
+                    <option value="3">3 человека</option>
+                    <option value="4">4 человека</option>
+                    <option value="5">5 человек</option>
+                    <option value="6">6 человек</option>
                   </select>
                 </div>
 
                 <div class="col-12">
-                  <label for="order-comment" class="form-label">Комментарий</label>
-                  <textarea id="order-comment" name="comment" class="form-control" rows="4"></textarea>
-                </div>
+                  <p class="form-label mb-2">Дополнительные услуги (цена за одного гостя)</p>
 
-                <div class="col-12">
                   <div class="form-check">
-                    <input id="order-agree" class="form-check-input" type="checkbox" required>
-                    <label class="form-check-label" for="order-agree">
-                      Я согласен на обработку данных *
+                    <input id="service-transfer" class="form-check-input service-check" type="checkbox"
+                      data-price="3500" data-name="трансфер">
+                    <label class="form-check-label" for="service-transfer">
+                      Трансфер из аэропорта и обратно, +3&nbsp;500 ₽
+                    </label>
+                  </div>
+
+                  <div class="form-check">
+                    <input id="service-insurance" class="form-check-input service-check" type="checkbox"
+                      data-price="2800" data-name="страховка">
+                    <label class="form-check-label" for="service-insurance">
+                      Медицинская страховка, +2&nbsp;800 ₽
+                    </label>
+                  </div>
+
+                  <div class="form-check">
+                    <input id="service-excursions" class="form-check-input service-check" type="checkbox"
+                      data-price="7500" data-name="экскурсии">
+                    <label class="form-check-label" for="service-excursions">
+                      Пакет экскурсий, +7&nbsp;500 ₽
                     </label>
                   </div>
                 </div>
 
-                <div class="col-12 d-flex gap-2">
-                  <button class="btn btn-primary" type="submit">
-                    Отправить заявку
-                  </button>
-                  <button class="btn btn-outline-secondary" type="reset">
-                    Очистить
-                  </button>
+                <div class="col-12">
+                  <label for="booking-comment" class="form-label">Комментарий</label>
+                  <textarea id="booking-comment" name="comment" class="form-control" rows="3"
+                    placeholder="Например, пожелания к отелю или питанию"></textarea>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-check">
+                    <input id="booking-agree" class="form-check-input" type="checkbox" required>
+                    <label class="form-check-label" for="booking-agree">
+                      Я согласен на обработку данных *
+                    </label>
+                    <div class="invalid-feedback">Нужно ваше согласие.</div>
+                  </div>
+                </div>
+
+                <div class="col-12 d-flex flex-wrap gap-2">
+                  <button class="btn btn-accent" type="submit">Отправить заявку</button>
+                  <button class="btn btn-outline-secondary" type="reset">Очистить</button>
                 </div>
               </div>
             </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-4">
+        <div class="card shadow-sm position-sticky summary-card">
+          <div class="card-body">
+            <h2 class="h5 mb-3">Ваш заказ</h2>
+
+            <dl class="row mb-0">
+              <dt class="col-5 fw-normal text-body-secondary">Тур</dt>
+              <dd class="col-7" id="sumTour">не выбран</dd>
+
+              <dt class="col-5 fw-normal text-body-secondary">Вылет</dt>
+              <dd class="col-7" id="sumDate">-</dd>
+
+              <dt class="col-5 fw-normal text-body-secondary">Гостей</dt>
+              <dd class="col-7" id="sumGuests">2</dd>
+
+              <dt class="col-5 fw-normal text-body-secondary">Услуги</dt>
+              <dd class="col-7" id="sumServices">нет</dd>
+            </dl>
+
+            <hr>
+
+            <p class="d-flex justify-content-between align-items-center fs-5 fw-bold mb-0">
+              <span>Итого</span>
+              <span id="sumTotal">0 ₽</span>
+            </p>
           </div>
         </div>
       </div>
@@ -227,19 +310,21 @@
 
             <div class="mb-3">
               <label for="manager-name" class="form-label">Имя *</label>
-              <input id="manager-name" name="name" type="text" class="form-control" required>
+              <input id="manager-name" name="name" type="text" class="form-control" placeholder="Иван Иванов" required>
               <div class="invalid-feedback">Введите имя.</div>
             </div>
 
             <div class="mb-3">
               <label for="manager-contact" class="form-label">E-mail *</label>
-              <input id="manager-contact" name="email" type="email" class="form-control" required>
-              <div class="invalid-feedback">Введите корректный e-mail.</div>
+              <input id="manager-contact" name="email" type="email" class="form-control" placeholder="example@mail.ru"
+                pattern="[^@ ]+@[^@ ]+[.][^@ ]+" required>
+              <div class="invalid-feedback">Введите e-mail в формате example@mail.ru.</div>
             </div>
 
             <div class="mb-3">
               <label for="manager-question" class="form-label">Ваш вопрос *</label>
-              <textarea id="manager-question" name="question" class="form-control" rows="4" required></textarea>
+              <textarea id="manager-question" name="question" class="form-control" rows="4"
+                placeholder="Например, можно ли поменять даты вылета?" required></textarea>
               <div class="invalid-feedback">Напишите вопрос.</div>
             </div>
 

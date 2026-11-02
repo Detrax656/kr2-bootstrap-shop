@@ -147,7 +147,7 @@
             <p class="fw-bold fs-5 mt-auto">от 145&nbsp;000 ₽</p>
 
             <div class="d-flex flex-wrap gap-2">
-              <a class="btn btn-primary" href="tour.html">Подробнее</a>
+              <a class="btn btn-primary" href="tour.html?id=cancun">Подробнее</a>
               <button class="btn btn-outline-primary favorite-btn" type="button" data-id="cancun"
                 data-title="Канкун: пляжный отдых" data-price="145000" data-image="images/placeholder.jpg"
                 data-meta="8 дней, вылет 15.01.2027" aria-pressed="false">
@@ -173,7 +173,7 @@
             <p class="fw-bold fs-5 mt-auto">от 118&nbsp;000 ₽</p>
 
             <div class="d-flex flex-wrap gap-2">
-              <a class="btn btn-primary" href="tour.html">Подробнее</a>
+              <a class="btn btn-primary" href="tour.html?id=mexico-city">Подробнее</a>
               <button class="btn btn-outline-primary favorite-btn" type="button" data-id="mexico-city"
                 data-title="Мехико и Теотиуакан" data-price="118000" data-image="images/placeholder2.jpg"
                 data-meta="7 дней, вылет 05.02.2027" aria-pressed="false">
@@ -199,7 +199,7 @@
             <p class="fw-bold fs-5 mt-auto">от 98&nbsp;000 ₽</p>
 
             <div class="d-flex flex-wrap gap-2">
-              <a class="btn btn-primary" href="tour.html">Подробнее</a>
+              <a class="btn btn-primary" href="tour.html?id=oaxaca">Подробнее</a>
               <button class="btn btn-outline-primary favorite-btn" type="button" data-id="oaxaca"
                 data-title="Оахака: культура и кухня" data-price="98000" data-image="images/placeholder.jpg"
                 data-meta="6 дней, вылет 20.02.2027" aria-pressed="false">
@@ -225,7 +225,7 @@
             <p class="fw-bold fs-5 mt-auto">от 162&nbsp;000 ₽</p>
 
             <div class="d-flex flex-wrap gap-2">
-              <a class="btn btn-primary" href="tour.html">Подробнее</a>
+              <a class="btn btn-primary" href="tour.html?id=tulum">Подробнее</a>
               <button class="btn btn-outline-primary favorite-btn" type="button" data-id="tulum"
                 data-title="Тулум и Ривьера-Майя" data-price="162000" data-image="images/placeholder2.jpg"
                 data-meta="9 дней, вылет 28.01.2027" aria-pressed="false">
@@ -251,7 +251,7 @@
             <p class="fw-bold fs-5 mt-auto">от 132&nbsp;000 ₽</p>
 
             <div class="d-flex flex-wrap gap-2">
-              <a class="btn btn-primary" href="tour.html">Подробнее</a>
+              <a class="btn btn-primary" href="tour.html?id=yucatan">Подробнее</a>
               <button class="btn btn-outline-primary favorite-btn" type="button" data-id="yucatan"
                 data-title="Юкатан: Мерида и Чичен-Ица" data-price="132000" data-image="images/placeholder.jpg"
                 data-meta="8 дней, вылет 12.03.2027" aria-pressed="false">
@@ -277,7 +277,7 @@
             <p class="fw-bold fs-5 mt-auto">от 125&nbsp;000 ₽</p>
 
             <div class="d-flex flex-wrap gap-2">
-              <a class="btn btn-primary" href="tour.html">Подробнее</a>
+              <a class="btn btn-primary" href="tour.html?id=chiapas">Подробнее</a>
               <button class="btn btn-outline-primary favorite-btn" type="button" data-id="chiapas"
                 data-title="Чьяпас: джунгли и каньон" data-price="125000" data-image="images/placeholder2.jpg"
                 data-meta="7 дней, вылет 26.03.2027" aria-pressed="false">
@@ -429,19 +429,21 @@
 
             <div class="mb-3">
               <label for="manager-name" class="form-label">Имя *</label>
-              <input id="manager-name" name="name" type="text" class="form-control" required>
+              <input id="manager-name" name="name" type="text" class="form-control" placeholder="Иван Иванов" required>
               <div class="invalid-feedback">Введите имя.</div>
             </div>
 
             <div class="mb-3">
               <label for="manager-contact" class="form-label">E-mail *</label>
-              <input id="manager-contact" name="email" type="email" class="form-control" required>
-              <div class="invalid-feedback">Введите корректный e-mail.</div>
+              <input id="manager-contact" name="email" type="email" class="form-control" placeholder="example@mail.ru"
+                pattern="[^@ ]+@[^@ ]+[.][^@ ]+" required>
+              <div class="invalid-feedback">Введите e-mail в формате example@mail.ru.</div>
             </div>
 
             <div class="mb-3">
               <label for="manager-question" class="form-label">Ваш вопрос *</label>
-              <textarea id="manager-question" name="question" class="form-control" rows="4" required></textarea>
+              <textarea id="manager-question" name="question" class="form-control" rows="4"
+                placeholder="Например, можно ли поменять даты вылета?" required></textarea>
               <div class="invalid-feedback">Напишите вопрос.</div>
             </div>
 

@@ -108,7 +108,7 @@
                   </div>
 
                   <div class="col-12">
-                    <button class="btn btn-primary btn-lg w-100" type="submit">Найти туры</button>
+                    <button class="btn btn-accent btn-lg w-100" type="submit">Найти туры</button>
                   </div>
                 </div>
               </form>
@@ -180,7 +180,7 @@
 
       <div class="row g-4">
         <div class="col-12 col-md-6 col-lg-3">
-          <div class="p-4 border rounded h-100 bg-body-tertiary">
+          <div class="p-4 border rounded h-100 section-dark">
             <h3 class="h5">Подбор по датам</h3>
             <p class="mb-0 text-body-secondary">
               Выберите направление и дату вылета, и в каталоге останутся только подходящие туры.
@@ -189,7 +189,7 @@
         </div>
 
         <div class="col-12 col-md-6 col-lg-3">
-          <div class="p-4 border rounded h-100 bg-body-tertiary">
+          <div class="p-4 border rounded h-100 section-dark">
             <h3 class="h5">Услуги в один клик</h3>
             <p class="mb-0 text-body-secondary">
               В заявке можно сразу добавить трансфер, страховку и экскурсии.
@@ -198,7 +198,7 @@
         </div>
 
         <div class="col-12 col-md-6 col-lg-3">
-          <div class="p-4 border rounded h-100 bg-body-tertiary">
+          <div class="p-4 border rounded h-100 section-dark">
             <h3 class="h5">Менеджер на связи</h3>
             <p class="mb-0 text-body-secondary">
               Любой вопрос можно задать менеджеру прямо с сайта, кнопка есть в меню на каждой странице.
@@ -207,7 +207,7 @@
         </div>
 
         <div class="col-12 col-md-6 col-lg-3">
-          <div class="p-4 border rounded h-100 bg-body-tertiary">
+          <div class="p-4 border rounded h-100 section-dark">
             <h3 class="h5">Личный кабинет</h3>
             <p class="mb-0 text-body-secondary">
               Понравившиеся туры сохраняются в избранном, а заявки собраны в одном месте.
@@ -218,12 +218,12 @@
     </section>
 
     <section class="container my-5">
-      <div class="p-4 p-md-5 border rounded text-center bg-body-tertiary">
+      <div class="p-4 p-md-5 border rounded text-center section-dark">
         <h2 class="h3">Остались вопросы?</h2>
         <p class="text-body-secondary">
           Напишите менеджеру, и мы подскажем, какой тур подойдёт именно вам.
         </p>
-        <button class="btn btn-primary btn-lg" type="button" data-bs-toggle="modal"
+        <button class="btn btn-accent btn-lg" type="button" data-bs-toggle="modal"
           data-bs-target="#managerModal">
           Задать вопрос
         </button>
@@ -311,19 +311,21 @@
 
             <div class="mb-3">
               <label for="manager-name" class="form-label">Имя *</label>
-              <input id="manager-name" name="name" type="text" class="form-control" required>
+              <input id="manager-name" name="name" type="text" class="form-control" placeholder="Иван Иванов" required>
               <div class="invalid-feedback">Введите имя.</div>
             </div>
 
             <div class="mb-3">
               <label for="manager-contact" class="form-label">E-mail *</label>
-              <input id="manager-contact" name="email" type="email" class="form-control" required>
-              <div class="invalid-feedback">Введите корректный e-mail.</div>
+              <input id="manager-contact" name="email" type="email" class="form-control" placeholder="example@mail.ru"
+                pattern="[^@ ]+@[^@ ]+[.][^@ ]+" required>
+              <div class="invalid-feedback">Введите e-mail в формате example@mail.ru.</div>
             </div>
 
             <div class="mb-3">
               <label for="manager-question" class="form-label">Ваш вопрос *</label>
-              <textarea id="manager-question" name="question" class="form-control" rows="4" required></textarea>
+              <textarea id="manager-question" name="question" class="form-control" rows="4"
+                placeholder="Например, можно ли поменять даты вылета?" required></textarea>
               <div class="invalid-feedback">Напишите вопрос.</div>
             </div>
 
