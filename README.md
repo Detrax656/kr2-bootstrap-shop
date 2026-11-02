@@ -39,4 +39,4 @@
 
 ## Ссылка на опубликованный проект
 
-GitHub Pages: 
+GitHub Pages: https://detrax656.github.io/kr2-bootstrap-shop/
