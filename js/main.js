@@ -1,3 +1,5 @@
+/*
+
 // Получаем модальное окно по id.
 const orderDialog = document.getElementById('order-dialog');
 
@@ -111,4 +113,4 @@ orderForm.addEventListener('submit', (event) => {
   if (orderDialog) {
     orderForm.hidden = true;
   }
-});
+}); */
