@@ -1,15 +1,8 @@
 /* ===============================
-   Общий скрипт сайта «Роза ветров».
-   Он подключён на всех страницах, поэтому перед каждым блоком
-   мы проверяем, есть ли нужный элемент на текущей странице.
-   =============================== */
-
-
-/* ===============================
    0. Данные о турах
    =============================== */
 
-// Объект с описанием туров. Ключ (например, 'cancun') совпадает с id тура.
+// Объект с описанием туров. Ключ совпадает с id тура.
 // Из него страница тура берёт текст, а бронирование берёт цену.
 const TOURS = {
   'cancun': {
@@ -83,7 +76,7 @@ const TOURS = {
   'tulum': {
     id: 'tulum',
     title: 'Тулум и Ривьера-Майя',
-    badge: 'Горящий',
+    badge: 'Скидка',
     badgeClass: 'bg-danger',
     days: 9,
     date: '28.01.2027',
@@ -128,7 +121,7 @@ const TOURS = {
   'chiapas': {
     id: 'chiapas',
     title: 'Чьяпас: джунгли и каньон',
-    badge: 'Приключения',
+    badge: 'Экскурсии',
     badgeClass: 'bg-secondary',
     days: 7,
     date: '26.03.2027',
@@ -149,7 +142,9 @@ const TOURS = {
   }
 };
 
-// Превращает число 145000 в строку «145 000 ₽».
+// Параметры из адреса страницы.
+const params = new URLSearchParams(window.location.search);
+
 function formatPrice(value) {
   // toLocaleString('ru-RU') сам расставляет пробелы между тысячами.
   return Number(value).toLocaleString('ru-RU') + ' ₽';
@@ -160,77 +155,48 @@ function formatPrice(value) {
    1. Кнопка «Наверх»
    =============================== */
 
-// Находим кнопку «Наверх» по классу.
 const toTopButton = document.querySelector('.to-top');
 
-// Работаем дальше, только если кнопка есть на странице.
 if (toTopButton) {
-  // Событие scroll срабатывает каждый раз, когда страницу прокручивают.
   window.addEventListener('scroll', () => {
     // window.scrollY — сколько пикселей страница уже прокручена вниз.
-    // Если больше 300, добавляем класс to-top--visible (кнопка появляется),
-    // если меньше — убираем его (кнопка прячется).
+    // Если больше 300, добавляем класс to-top--visible,
+    // если меньше — убираем его
     toTopButton.classList.toggle('to-top--visible', window.scrollY > 300);
   });
 }
-// Сам переход наверх делает ссылка href="#", а плавность даёт
-// scroll-behavior: smooth в custom.css, поэтому JS для этого не нужен.
-
 
 /* ===============================
-   2. Форма «Вопрос менеджеру» (модальное окно)
+   2. Модальное окно 
    =============================== */
 
-// Само модальное окно, форма и блок с сообщением об успехе.
-const managerModal = document.getElementById('managerModal');
-const managerForm = document.getElementById('managerForm');
-const managerSuccess = document.getElementById('managerSuccess');
+const managerModal = document.getElementById('manager-modal');
 
-if (managerForm) {
-  // Обрабатываем отправку формы.
-  managerForm.addEventListener('submit', (event) => {
-    // Отменяем стандартную отправку, чтобы страница не перезагружалась.
-    event.preventDefault();
-
-    // checkValidity() возвращает false, если какое-то поле заполнено неверно.
-    if (!managerForm.checkValidity()) {
-      // Класс was-validated включает подсветку полей и сообщения об ошибках в Bootstrap.
-      managerForm.classList.add('was-validated');
-      return;
-    }
-
-    // Всё заполнено верно: прячем форму и показываем сообщение об успехе.
-    managerForm.classList.add('d-none');
-    managerSuccess.classList.remove('d-none');
-  });
-
-  // Bootstrap сам вызывает событие hidden.bs.modal, когда окно закрылось.
-  // Возвращаем окно в исходное состояние, чтобы при следующем открытии была чистая форма.
+if (managerModal) {
   managerModal.addEventListener('hidden.bs.modal', () => {
+    const managerForm = document.getElementById('manager-form');
+
     managerForm.reset();
-    managerForm.classList.remove('was-validated', 'd-none');
-    managerSuccess.classList.add('d-none');
+    managerForm.classList.remove('was-validated');
+    document.getElementById('manager-success').classList.add('d-none');
   });
 }
 
 
 /* ===============================
-   3. Обычные формы сайта (бронирование и профиль)
+   3. Формы 
    =============================== */
 
-// У таких форм в HTML есть класс js-form, а в атрибуте data-success записан
-// id блока, который нужно показать после успешной отправки.
 const jsForms = document.querySelectorAll('.js-form');
 
 jsForms.forEach((form) => {
   form.addEventListener('submit', (event) => {
-    // Не даём странице перезагрузиться.
     event.preventDefault();
 
-    // Блок с сообщением об успехе для этой формы.
     const message = document.getElementById(form.dataset.success);
 
     // Если есть ошибки, показываем подсветку и прячем старое сообщение.
+
     if (!form.checkValidity()) {
       form.classList.add('was-validated');
       message.classList.add('d-none');
@@ -238,19 +204,17 @@ jsForms.forEach((form) => {
     }
 
     // Ошибок нет: убираем подсветку и показываем сообщение об успехе.
+
     form.classList.remove('was-validated');
     message.classList.remove('d-none');
 
-    // Плавно прокручиваем страницу к сообщению, чтобы его было видно.
     message.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-    // Форму профиля очищать не нужно (у неё есть атрибут data-keep),
-    // а заявку на бронирование очищаем.
     if (!form.hasAttribute('data-keep')) {
       form.reset();
 
       // После очистки сообщаем остальному коду, что поля изменились
-      // (так пересчитается сводка заказа).
+
       form.dispatchEvent(new Event('change'));
     }
   });
@@ -258,53 +222,45 @@ jsForms.forEach((form) => {
 
 
 /* ===============================
-   4. Страница тура: подставляем данные выбранного тура
+   4. Страница тура
    =============================== */
 
-// Заголовок есть только на странице tour.html.
-const tourTitle = document.getElementById('tourTitle');
+const tourTitle = document.getElementById('tour-title');
 
 if (tourTitle) {
-  // Читаем id тура из адреса, например tour.html?id=oaxaca.
-  const params = new URLSearchParams(window.location.search);
   const tourId = params.get('id');
 
   // Берём тур из объекта TOURS. Если id нет или он неверный, показываем Канкун.
   const tour = TOURS[tourId] || TOURS['cancun'];
 
-  // Название вкладки браузера.
   document.title = `${tour.title} | Роза ветров`;
 
   // Подставляем текст в нужные места страницы.
-  document.getElementById('tourCrumb').textContent = tour.title;
+  document.getElementById('tour-crumb').textContent = tour.title;
   tourTitle.textContent = tour.title;
-  document.getElementById('tourMeta').textContent = `${tour.days} дней, вылет ${tour.date}`;
-  document.getElementById('tourText').textContent = tour.text;
-  document.getElementById('tourDescription').textContent = tour.description;
-  document.getElementById('tourPrice').textContent = 'от ' + formatPrice(tour.price);
-  document.getElementById('tourSeats').textContent = `Осталось мест: ${tour.seats}. Успейте забронировать.`;
+  document.getElementById('tour-meta').textContent = `${tour.days} дней, вылет ${tour.date}`;
+  document.getElementById('tour-text').textContent = tour.text;
+  document.getElementById('tour-description').textContent = tour.description;
+  document.getElementById('tour-price').textContent = 'от ' + formatPrice(tour.price);
+  document.getElementById('tour-seats').textContent = `Осталось мест: ${tour.seats}. Успейте забронировать.`;
 
-  // Плашка тура: меняем текст и класс цвета.
-  const badge = document.getElementById('tourBadge');
+  const badge = document.getElementById('tour-badge');
   badge.textContent = tour.badge;
   badge.className = `badge mb-3 ${tour.badgeClass}`;
 
   // Кнопка «Забронировать» ведёт на бронирование с уже выбранным туром.
-  document.getElementById('bookLink').href = `booking.html?tour=${tour.id}`;
+  document.getElementById('book-link').href = `booking.html?tour=${tour.id}`;
 
-  // Программа тура: из каждой строки массива делаем элемент списка <li>.
-  // map() создаёт новый массив, join('') склеивает его в одну строку.
-  document.getElementById('tourProgram').innerHTML =
+  document.getElementById('tour-program').innerHTML =
     tour.program.map((step) => `<li>${step}</li>`).join('');
 
-  // Фото в карусели: каждой картинке по очереди даём свой файл.
   document.querySelectorAll('.carousel-item img').forEach((img, index) => {
     img.src = tour.images[index];
     img.alt = `${tour.title}, фото ${index + 1}`;
   });
 
-  // Кнопке «В избранное» передаём данные тура (так же, как в карточках каталога).
-  const tourFavorite = document.getElementById('tourFavorite');
+  // Кнопке «В избранное» передаём данные тура.
+  const tourFavorite = document.getElementById('tour-favorite');
   tourFavorite.dataset.id = tour.id;
   tourFavorite.dataset.title = tour.title;
   tourFavorite.dataset.price = tour.price;
@@ -317,30 +273,25 @@ if (tourTitle) {
    5. Избранные туры (localStorage)
    =============================== */
 
-// localStorage — это маленькое хранилище в браузере.
-// Данные в нём остаются, даже если закрыть страницу или вкладку.
-// Хранить можно только строки, поэтому список туров превращаем в строку через JSON.
 
-// Название «ячейки» в хранилище, в которой лежит список избранного.
+// Название «ячейки» в хранилище
 const FAVORITES_KEY = 'rosa-vetrov-favorites';
 
-// Достаёт список избранного из хранилища.
 function getFavorites() {
-  // getItem возвращает сохранённую строку или null, если там пока пусто.
+  // getItem возвращает сохранённую строку или null
   const saved = localStorage.getItem(FAVORITES_KEY);
 
-  // Если что-то есть, превращаем строку обратно в массив (JSON.parse).
+  // Если что-то есть, превращаем строку обратно в массив
   // Если пусто, возвращаем пустой массив.
   return saved ? JSON.parse(saved) : [];
 }
 
-// Сохраняет список избранного в хранилище.
 function saveFavorites(list) {
-  // JSON.stringify превращает массив в строку, setItem кладёт её в хранилище.
+
   localStorage.setItem(FAVORITES_KEY, JSON.stringify(list));
 }
 
-// Проверяет, есть ли тур с таким id в избранном.
+// Есть ли тур с таким id в избранном.
 function isFavorite(id) {
   // some() возвращает true, если хотя бы у одного тура id совпал.
   return getFavorites().some((tour) => tour.id === id);
@@ -348,7 +299,7 @@ function isFavorite(id) {
 
 // Обновляет цифру рядом с кнопкой «Личный кабинет».
 function updateFavoritesCount() {
-  const counter = document.getElementById('favoritesCount');
+  const counter = document.getElementById('favorites-count');
 
   if (counter) {
     // length — сколько туров лежит в списке.
@@ -356,22 +307,16 @@ function updateFavoritesCount() {
   }
 }
 
-// Меняет вид кнопки «В избранное» в зависимости от того, добавлен тур или нет.
 function updateFavoriteButton(button) {
-  // dataset.id — это значение атрибута data-id у кнопки.
   const active = isFavorite(button.dataset.id);
 
-  // Меняем текст: закрашенное сердечко, если тур в избранном.
   button.innerHTML = active ? '&#9829; В избранном' : '&#9825; В избранное';
 
-  // Класс active делает outline-кнопку Bootstrap закрашенной.
   button.classList.toggle('active', active);
 
-  // aria-pressed подсказывает программам для чтения с экрана, нажата ли кнопка.
   button.setAttribute('aria-pressed', active);
 }
 
-// Находим все кнопки «В избранное» на странице.
 const favoriteButtons = document.querySelectorAll('.favorite-btn');
 
 // Для каждой кнопки по очереди выполняем код внутри.
@@ -379,19 +324,14 @@ favoriteButtons.forEach((button) => {
   // При загрузке страницы сразу показываем правильный вид кнопки.
   updateFavoriteButton(button);
 
-  // Следим за кликом по кнопке.
   button.addEventListener('click', () => {
-    // Берём id тура из атрибута data-id.
     const id = button.dataset.id;
 
-    // Достаём текущий список избранного.
     let favorites = getFavorites();
 
     if (isFavorite(id)) {
-      // Тур уже в избранном: оставляем в списке все туры, кроме этого (filter).
       favorites = favorites.filter((tour) => tour.id !== id);
     } else {
-      // Тура ещё нет: добавляем в список объект с данными из data-атрибутов кнопки.
       favorites.push({
         id: id,
         title: button.dataset.title,
@@ -401,7 +341,6 @@ favoriteButtons.forEach((button) => {
       });
     }
 
-    // Записываем новый список в хранилище.
     saveFavorites(favorites);
 
     // Обновляем кнопку и цифру в меню.
@@ -418,19 +357,15 @@ updateFavoritesCount();
    6. Личный кабинет: список избранного
    =============================== */
 
-// Блок, куда мы выводим карточки, и сообщение «в избранном пусто».
-const favoritesList = document.getElementById('favoritesList');
-const favoritesEmpty = document.getElementById('favoritesEmpty');
+const favoritesList = document.getElementById('favorites-list');
+const favoritesEmpty = document.getElementById('favorites-empty');
 
-// Рисует карточки избранных туров на странице.
 function renderFavorites() {
   const favorites = getFavorites();
 
   // Если список пуст, показываем сообщение, иначе прячем.
   favoritesEmpty.classList.toggle('d-none', favorites.length !== 0);
 
-  // Для каждого тура собираем кусок HTML-кода карточки и склеиваем всё в одну строку.
-  // Обратные кавычки ` ` позволяют вставлять значения через ${...}.
   favoritesList.innerHTML = favorites.map((tour) => `
     <div class="col-12 col-md-6 col-lg-4">
       <div class="card h-100 shadow-sm">
@@ -441,7 +376,7 @@ function renderFavorites() {
           <p class="fw-bold fs-5 mt-auto">от ${formatPrice(tour.price)}</p>
           <div class="d-flex flex-wrap gap-2">
             <a class="btn btn-primary" href="tour.html?id=${tour.id}">Подробнее</a>
-            <button class="btn btn-outline-secondary remove-favorite" type="button" data-id="${tour.id}">Убрать</button>
+            <button class="btn btn-outline-secondary favorite-remove" type="button" data-id="${tour.id}">Убрать</button>
           </div>
         </div>
       </div>
@@ -450,46 +385,35 @@ function renderFavorites() {
 }
 
 if (favoritesList) {
-  // Карточки создаются кодом, поэтому вешаем один обработчик на весь блок
-  // и смотрим, по какой кнопке кликнули.
   favoritesList.addEventListener('click', (event) => {
-    // closest() ищет ближайшую кнопку «Убрать» от места клика.
-    const button = event.target.closest('.remove-favorite');
+    const button = event.target.closest('.favorite-remove');
 
-    // Если кликнули не по кнопке «Убрать», ничего не делаем.
     if (!button) {
       return;
     }
 
-    // Убираем тур из списка, сохраняем и рисуем заново.
     saveFavorites(getFavorites().filter((tour) => tour.id !== button.dataset.id));
     renderFavorites();
     updateFavoritesCount();
   });
 
-  // Первый раз рисуем карточки при загрузке страницы.
   renderFavorites();
 }
 
 
 /* ===============================
-   7. Подбор туров в каталоге
+   7. Подбор туров
    =============================== */
 
-const filterForm = document.getElementById('filterForm');
+const filterForm = document.getElementById('filter-form');
 
-// Работает только на странице каталога, где есть форма подбора.
 if (filterForm) {
-  // Все карточки туров.
   const tourItems = document.querySelectorAll('.tour-item');
 
-  // Сообщение «ничего не найдено» и счётчик найденных туров.
-  const emptyMessage = document.getElementById('emptyMessage');
-  const foundCount = document.getElementById('foundCount');
+  const emptyMessage = document.getElementById('empty-message');
+  const foundCount = document.getElementById('found-count');
 
-  // Показывает только те карточки, которые подходят под выбранные условия.
   function applyFilter() {
-    // Что выбрал пользователь в форме. Пустая строка значит «не выбрано».
     const dest = filterForm.elements['dest'].value;
     const date = filterForm.elements['date'].value;
     const maxPrice = filterForm.elements['price'].value;
@@ -501,17 +425,13 @@ if (filterForm) {
       // Направление совпадает или не выбрано.
       const okDest = dest === '' || item.dataset.dest === dest;
 
-      // Даты записаны как 2027-01-15, поэтому их можно сравнивать как обычные строки:
-      // дата вылета должна быть не раньше выбранной.
       const okDate = date === '' || item.dataset.date >= date;
 
-      // Цену сравниваем как числа, поэтому сначала превращаем строки в числа (Number).
       const okPrice = maxPrice === '' || Number(item.dataset.price) <= Number(maxPrice);
 
       // Тур виден, только если подошли все три условия.
       const visible = okDest && okDate && okPrice;
 
-      // Класс d-none из Bootstrap прячет элемент, второй аргумент включает или выключает класс.
       item.classList.toggle('d-none', !visible);
 
       if (visible) {
@@ -524,24 +444,17 @@ if (filterForm) {
     emptyMessage.classList.toggle('d-none', found !== 0);
   }
 
-  // Подбор срабатывает по кнопке «Подобрать».
   filterForm.addEventListener('submit', (event) => {
     event.preventDefault();
     applyFilter();
   });
 
-  // И сразу при смене любого поля.
   filterForm.addEventListener('change', applyFilter);
 
-  // Кнопка «Сбросить»: очищаем форму и показываем все туры.
-  document.getElementById('filterReset').addEventListener('click', () => {
+  document.getElementById('filter-reset').addEventListener('click', () => {
     filterForm.reset();
     applyFilter();
   });
-
-  // Если на каталог пришли с главной или из меню, в адресе есть параметры,
-  // например tours.html?dest=cancun. URLSearchParams помогает их прочитать.
-  const params = new URLSearchParams(window.location.search);
 
   if (params.get('dest')) {
     filterForm.elements['dest'].value = params.get('dest');
@@ -557,27 +470,22 @@ if (filterForm) {
 
 
 /* ===============================
-   8. Бронирование: сводка заказа
+   8. Бронирование
    =============================== */
 
-const bookingForm = document.getElementById('bookingForm');
+const bookingForm = document.getElementById('booking-form');
 
 if (bookingForm) {
-  // Если пришли со страницы тура (booking.html?tour=oaxaca), выбираем этот тур в списке.
-  const params = new URLSearchParams(window.location.search);
   const preselected = params.get('tour');
 
   if (preselected && TOURS[preselected]) {
     bookingForm.elements['tour'].value = preselected;
   }
 
-  // Пересчитывает карточку «Ваш заказ» справа.
   function updateSummary() {
-    // Выбранный тур и число гостей.
     const tour = TOURS[bookingForm.elements['tour'].value];
     const guests = Number(bookingForm.elements['guests'].value);
 
-    // Складываем цены отмеченных услуг и собираем их названия.
     let servicesPrice = 0;
     const serviceNames = [];
 
@@ -589,14 +497,14 @@ if (bookingForm) {
     // Если тур ещё не выбран, показываем прочерки и нулевую сумму.
     const tourPrice = tour ? tour.price : 0;
 
-    document.getElementById('sumTour').textContent = tour ? tour.title : 'не выбран';
-    document.getElementById('sumDate').textContent = tour ? tour.date : '-';
-    document.getElementById('sumGuests').textContent = guests;
-    document.getElementById('sumServices').textContent =
+    document.getElementById('sum-tour').textContent = tour ? tour.title : 'не выбран';
+    document.getElementById('sum-date').textContent = tour ? tour.date : '-';
+    document.getElementById('sum-guests').textContent = guests;
+    document.getElementById('sum-services').textContent =
       serviceNames.length > 0 ? serviceNames.join(', ') : 'нет';
 
     // Итог: (цена тура + цены услуг) умножить на число гостей.
-    document.getElementById('sumTotal').textContent = formatPrice((tourPrice + servicesPrice) * guests);
+    document.getElementById('sum-total').textContent = formatPrice((tourPrice + servicesPrice) * guests);
   }
 
   // Пересчитываем при любом изменении формы и один раз при загрузке страницы.

@@ -24,12 +24,12 @@
         <span>Роза ветров</span>
       </a>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
-        aria-controls="mainNavbar" aria-expanded="false" aria-label="Переключить навигацию">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navbar"
+        aria-controls="main-navbar" aria-expanded="false" aria-label="Переключить навигацию">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="mainNavbar">
+      <div class="collapse navbar-collapse" id="main-navbar">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link" href="index.html">Главная</a>
@@ -62,12 +62,12 @@
 
         <div class="d-flex flex-column flex-lg-row gap-2">
           <button class="btn btn-outline-light" type="button" data-bs-toggle="modal"
-            data-bs-target="#managerModal">
+            data-bs-target="#manager-modal">
             Вопрос менеджеру
           </button>
           <a class="btn btn-primary" href="account.html">
             Личный кабинет
-            <span class="badge text-bg-light" id="favoritesCount" title="Туров в избранном">0</span>
+            <span class="badge text-bg-light" id="favorites-count" title="Туров в избранном">0</span>
           </a>
         </div>
       </div>
@@ -89,11 +89,11 @@
               Заполните форму. Поля со звёздочкой обязательны для заполнения.
             </div>
 
-            <div class="alert alert-success d-none" role="alert" id="bookingSuccess">
+            <div class="alert alert-success d-none" role="alert" id="booking-success">
               Заявка отправлена! Менеджер свяжется с вами в течение рабочего дня.
             </div>
 
-            <form id="bookingForm" class="js-form" data-success="bookingSuccess" novalidate>
+            <form id="booking-form" class="js-form" data-success="booking-success" novalidate>
               <div class="row g-3">
                 <div class="col-12 col-md-6">
                   <label for="booking-name" class="form-label">Имя *</label>
@@ -114,8 +114,8 @@
                   <div class="input-group">
                     <span class="input-group-text">+7</span>
                     <input id="booking-phone" name="phone" type="tel" class="form-control"
-                      placeholder="900 000-00-00" pattern="[0-9 \-]{10,15}" required>
-                    <div class="invalid-feedback">Введите телефон, например 900 000-00-00.</div>
+                      placeholder="912 345-67-89" pattern="[0-9 \-]{10,15}" required>
+                    <div class="invalid-feedback">Введите телефон, например 912 345-67-89.</div>
                   </div>
                 </div>
 
@@ -149,7 +149,7 @@
                   <p class="form-label mb-2">Дополнительные услуги (цена за одного гостя)</p>
 
                   <div class="form-check">
-                    <input id="service-transfer" class="form-check-input service-check" type="checkbox"
+                    <input id="service-transfer" name="services" value="transfer" class="form-check-input service-check" type="checkbox"
                       data-price="3500" data-name="трансфер">
                     <label class="form-check-label" for="service-transfer">
                       Трансфер из аэропорта и обратно, +3&nbsp;500 ₽
@@ -157,7 +157,7 @@
                   </div>
 
                   <div class="form-check">
-                    <input id="service-insurance" class="form-check-input service-check" type="checkbox"
+                    <input id="service-insurance" name="services" value="insurance" class="form-check-input service-check" type="checkbox"
                       data-price="2800" data-name="страховка">
                     <label class="form-check-label" for="service-insurance">
                       Медицинская страховка, +2&nbsp;800 ₽
@@ -165,7 +165,7 @@
                   </div>
 
                   <div class="form-check">
-                    <input id="service-excursions" class="form-check-input service-check" type="checkbox"
+                    <input id="service-excursions" name="services" value="excursions" class="form-check-input service-check" type="checkbox"
                       data-price="7500" data-name="экскурсии">
                     <label class="form-check-label" for="service-excursions">
                       Пакет экскурсий, +7&nbsp;500 ₽
@@ -181,7 +181,7 @@
 
                 <div class="col-12">
                   <div class="form-check">
-                    <input id="booking-agree" class="form-check-input" type="checkbox" required>
+                    <input id="booking-agree" name="agree" class="form-check-input" type="checkbox" required>
                     <label class="form-check-label" for="booking-agree">
                       Я согласен на обработку данных *
                     </label>
@@ -206,23 +206,23 @@
 
             <dl class="row mb-0">
               <dt class="col-5 fw-normal text-body-secondary">Тур</dt>
-              <dd class="col-7" id="sumTour">не выбран</dd>
+              <dd class="col-7" id="sum-tour">не выбран</dd>
 
               <dt class="col-5 fw-normal text-body-secondary">Вылет</dt>
-              <dd class="col-7" id="sumDate">-</dd>
+              <dd class="col-7" id="sum-date">-</dd>
 
               <dt class="col-5 fw-normal text-body-secondary">Гостей</dt>
-              <dd class="col-7" id="sumGuests">2</dd>
+              <dd class="col-7" id="sum-guests">2</dd>
 
               <dt class="col-5 fw-normal text-body-secondary">Услуги</dt>
-              <dd class="col-7" id="sumServices">нет</dd>
+              <dd class="col-7" id="sum-services">нет</dd>
             </dl>
 
             <hr>
 
             <p class="d-flex justify-content-between align-items-center fs-5 fw-bold mb-0">
               <span>Итого</span>
-              <span id="sumTotal">0 ₽</span>
+              <span id="sum-total">0 ₽</span>
             </p>
           </div>
         </div>
@@ -275,10 +275,10 @@
         <div class="col-12 col-md-6 col-lg-4">
           <h2 class="h6 text-uppercase">Контакты</h2>
           <address class="mb-0 text-white-50">
-            г. Москва, ул. Примерная, д. 1, офис 10<br>
-            Телефон: <a class="link-light link-underline-opacity-0" href="tel:+79000000000">+7 (900) 000-00-00</a><br>
+            г. Москва, ул. Новый Арбат, д. 15, офис 301<br>
+            Телефон: <a class="link-light link-underline-opacity-0" href="tel:+74951234567">+7 (495) 123-45-67</a><br>
             E-mail: <a class="link-light link-underline-opacity-0"
-              href="mailto:info@rosa-vetrov.example">info@rosa-vetrov.example</a><br>
+              href="mailto:info@rosavetrov.ru">info@rosavetrov.ru</a><br>
             Пн-Пт: 10:00-19:00, Сб: 11:00-16:00, Вс: выходной
           </address>
         </div>
@@ -288,22 +288,26 @@
 
       <div class="d-flex flex-column flex-md-row justify-content-between gap-2 small text-white-50">
         <span>&copy; 2026 Турагентство «Роза ветров». Все права защищены.</span>
-        <span>Учебный проект: Корабельников Глеб, группа ЭФБО-07-25</span>
+        <span>Свяжитесь с нами если возникли вопросы.</span>
       </div>
     </div>
   </footer>
 
   <!-- Модальное окно «Вопрос менеджеру», общее для всех страниц -->
-  <div class="modal fade" id="managerModal" tabindex="-1" aria-labelledby="managerModalLabel" aria-hidden="true">
+  <div class="modal fade" id="manager-modal" tabindex="-1" aria-labelledby="manager-modal-label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h2 class="modal-title h5" id="managerModalLabel">Вопрос менеджеру</h2>
+          <h2 class="modal-title h5" id="manager-modal-label">Вопрос менеджеру</h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
         </div>
 
-        <form id="managerForm" novalidate>
+        <form id="manager-form" class="js-form" data-success="manager-success" novalidate>
           <div class="modal-body">
+            <div class="alert alert-success d-none" role="alert" id="manager-success">
+              Спасибо! Вопрос отправлен, менеджер ответит вам на e-mail.
+            </div>
+
             <p class="text-body-secondary">
               Напишите, что хотите уточнить, и менеджер ответит в рабочее время.
             </p>
@@ -329,7 +333,7 @@
             </div>
 
             <div class="form-check">
-              <input id="manager-agree" class="form-check-input" type="checkbox" required>
+              <input id="manager-agree" name="agree" class="form-check-input" type="checkbox" required>
               <label class="form-check-label" for="manager-agree">
                 Согласен на обработку данных *
               </label>
@@ -343,17 +347,11 @@
           </div>
         </form>
 
-        <div class="modal-body d-none" id="managerSuccess">
-          <div class="alert alert-success mb-3" role="alert">
-            Спасибо! Вопрос отправлен, менеджер ответит вам на e-mail.
-          </div>
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Закрыть</button>
-        </div>
       </div>
     </div>
   </div>
 
-  <a class="to-top" href="#" id="toTop" aria-label="Наверх" title="Наверх">&uarr;</a>
+  <a class="to-top" href="#" aria-label="Наверх" title="Наверх">&uarr;</a>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

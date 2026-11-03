@@ -3,7 +3,7 @@
    =============================== */
 
 :root {
-  /* Основные цвета проекта (hex) */
+  /* hex */
   --color-bg: #1d2634;
   --color-bg-dark: #141b26;
   --color-surface: #0f1a2e;
@@ -16,24 +16,19 @@
   --color-primary-border-subtle: #7a2a4d;
   --color-primary-text-emphasis: #ff9dbf;
   --color-accent: #12d459;
-  --color-accent-dark: #0c9a40;
   --color-accent-light: #7df0a8;
   --color-accent-bg-subtle: #0e3320;
   --color-accent-border-subtle: #1a6b3c;
 
-  /* Те же цвета в формате rgb (нужны Bootstrap и прозрачности) */
+  /* rgb */
   --color-bg-rgb: 29, 38, 52;
   --color-bg-dark-rgb: 20, 27, 38;
-  --color-surface-rgb: 15, 26, 46;
   --color-text-rgb: 255, 255, 255;
   --color-muted-rgb: 154, 165, 181;
   --color-primary-rgb: 216, 39, 83;
-  --color-primary-dark-rgb: 158, 19, 56;
   --color-primary-light-rgb: 255, 131, 162;
   --color-accent-rgb: 18, 212, 89;
-  --color-accent-dark-rgb: 12, 154, 64;
 
-  /* Передаём наши цвета в переменные Bootstrap */
   --bs-body-bg: var(--color-bg);
   --bs-body-bg-rgb: var(--color-bg-rgb);
   --bs-body-color: var(--color-text);
@@ -58,7 +53,6 @@
   --bs-success-bg-subtle: var(--color-accent-bg-subtle);
   --bs-success-border-subtle: var(--color-accent-border-subtle);
 
-  /* «Опасные» состояния (ошибки, скидки) тоже оформляем в цвете проекта */
   --bs-danger: var(--color-primary);
   --bs-danger-rgb: var(--color-primary-rgb);
   --bs-danger-text-emphasis: var(--color-primary-text-emphasis);
@@ -71,7 +65,6 @@
 
   --bs-dark-rgb: var(--color-bg-dark-rgb);
 
-  /* Подсветка полей форм: ошибка розовая, верно заполненное зелёное */
   --bs-form-invalid-color: var(--color-primary-light);
   --bs-form-invalid-border-color: var(--color-primary);
   --bs-form-valid-color: var(--color-accent);
@@ -87,15 +80,9 @@
 
 html {
   scroll-behavior: smooth;
-  /* Чтобы закреплённое меню не закрывало заголовки при переходе по ссылкам */
   scroll-padding-top: 5rem;
 }
 
-body {
-  min-height: 100vh;
-}
-
-/* Тёмно-синий блок, темнее фона сайта (преимущества, «Остались вопросы?») */
 .section-dark {
   background-color: var(--color-surface);
 }
@@ -105,37 +92,27 @@ body {
   object-fit: cover;
 }
 
-.hero-image {
+.hero__image {
   width: 100%;
   max-height: 420px;
   object-fit: cover;
 }
 
-/* Фото в карусели на странице тура */
-.tour-carousel img {
+.tour-carousel__image {
   height: 420px;
   object-fit: cover;
 }
 
 @media (max-width: 576px) {
-  .tour-carousel img {
+  .tour-carousel__image {
     height: 240px;
   }
 }
 
-/* Карточка «Ваш заказ» прилипает при прокрутке на широких экранах */
 .summary-card {
   top: 5rem;
 }
 
-
-/* ===============================
-   3. Цвета Bootstrap-компонентов
-   (у Bootstrap часть цветов записана прямо в классах,
-   поэтому переменные :root на них не влияют)
-   =============================== */
-
-/* Кнопка основного цвета */
 .btn-primary {
   --bs-btn-color: var(--color-text);
   --bs-btn-bg: var(--color-primary);
@@ -152,7 +129,6 @@ body {
   --bs-btn-disabled-border-color: var(--color-primary);
 }
 
-/* Кнопка-контур основного цвета */
 .btn-outline-primary {
   --bs-btn-color: var(--color-primary-light);
   --bs-btn-border-color: var(--color-primary);
@@ -167,29 +143,40 @@ body {
   --bs-btn-disabled-border-color: var(--color-primary);
 }
 
-/* Своя кнопка акцентного цвета (зелёная), для главных действий */
 .btn-accent {
   --bs-btn-color: var(--color-bg-dark);
   --bs-btn-bg: var(--color-accent);
   --bs-btn-border-color: var(--color-accent);
-  --bs-btn-hover-color: var(--color-text);
-  --bs-btn-hover-bg: var(--color-accent-dark);
-  --bs-btn-hover-border-color: var(--color-accent-dark);
+  --bs-btn-hover-color: var(--color-bg-dark);
+  --bs-btn-hover-bg: var(--color-accent-light);
+  --bs-btn-hover-border-color: var(--color-accent-light);
   --bs-btn-focus-shadow-rgb: var(--color-accent-rgb);
-  --bs-btn-active-color: var(--color-text);
-  --bs-btn-active-bg: var(--color-accent-dark);
-  --bs-btn-active-border-color: var(--color-accent-dark);
+  --bs-btn-active-color: var(--color-bg-dark);
+  --bs-btn-active-bg: var(--color-accent-light);
+  --bs-btn-active-border-color: var(--color-accent-light);
   --bs-btn-disabled-color: var(--color-bg-dark);
   --bs-btn-disabled-bg: var(--color-accent);
   --bs-btn-disabled-border-color: var(--color-accent);
 }
 
-/* Тёмный текст на ярко-зелёной плашке читается лучше белого */
+.btn-outline-accent {
+  --bs-btn-color: var(--color-accent);
+  --bs-btn-border-color: var(--color-accent);
+  --bs-btn-hover-color: var(--color-bg-dark);
+  --bs-btn-hover-bg: var(--color-accent);
+  --bs-btn-hover-border-color: var(--color-accent);
+  --bs-btn-focus-shadow-rgb: var(--color-accent-rgb);
+  --bs-btn-active-color: var(--color-bg-dark);
+  --bs-btn-active-bg: var(--color-accent);
+  --bs-btn-active-border-color: var(--color-accent);
+  --bs-btn-disabled-color: var(--color-accent);
+  --bs-btn-disabled-border-color: var(--color-accent);
+}
+
 .badge.bg-success {
   --bs-badge-color: var(--color-bg-dark);
 }
 
-/* Пункты меню: активный пункт зелёный */
 .navbar-dark {
   --bs-navbar-hover-color: var(--color-accent-light);
   --bs-navbar-active-color: var(--color-accent);
@@ -203,7 +190,6 @@ body {
   --bs-dropdown-link-active-color: var(--color-text);
 }
 
-/* Поля форм: подсветка при фокусе в цвете проекта */
 .form-control:focus,
 .form-select:focus,
 [data-bs-theme="dark"] .form-control:focus,
@@ -222,7 +208,6 @@ body {
   box-shadow: 0 0 0 0.25rem rgba(var(--color-primary-rgb), 0.35);
 }
 
-/* Необязательные поля (комментарий, услуги) не подсвечиваем зелёным после проверки формы */
 .was-validated .form-control:valid:not([required]) {
   border-color: var(--bs-border-color);
   background-image: none;
@@ -242,12 +227,10 @@ body {
   color: inherit;
 }
 
-/* Крестик закрытия окна */
 .btn-close {
   --bs-btn-close-focus-shadow: 0 0 0 0.25rem rgba(var(--color-primary-rgb), 0.35);
 }
 
-/* Аккордеон: рамка при фокусе и стрелка открытого пункта */
 .accordion {
   --bs-accordion-btn-focus-border-color: var(--color-primary-light);
   --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(var(--color-primary-rgb), 0.35);
@@ -279,7 +262,6 @@ body {
   color: var(--color-text);
   font-size: 1.5rem;
   text-decoration: none;
-  /* По умолчанию кнопка скрыта */
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s, visibility 0.3s, background-color 0.2s;
@@ -290,7 +272,6 @@ body {
   color: var(--color-text);
 }
 
-/* Этот класс добавляет JS, когда страница прокручена вниз */
 .to-top--visible {
   opacity: 1;
   visibility: visible;

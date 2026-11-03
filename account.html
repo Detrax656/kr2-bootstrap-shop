@@ -24,12 +24,12 @@
         <span>Роза ветров</span>
       </a>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
-        aria-controls="mainNavbar" aria-expanded="false" aria-label="Переключить навигацию">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navbar"
+        aria-controls="main-navbar" aria-expanded="false" aria-label="Переключить навигацию">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="mainNavbar">
+      <div class="collapse navbar-collapse" id="main-navbar">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link" href="index.html">Главная</a>
@@ -62,12 +62,12 @@
 
         <div class="d-flex flex-column flex-lg-row gap-2">
           <button class="btn btn-outline-light" type="button" data-bs-toggle="modal"
-            data-bs-target="#managerModal">
+            data-bs-target="#manager-modal">
             Вопрос менеджеру
           </button>
           <a class="btn btn-primary active" href="account.html" aria-current="page">
             Личный кабинет
-            <span class="badge text-bg-light" id="favoritesCount" title="Туров в избранном">0</span>
+            <span class="badge text-bg-light" id="favorites-count" title="Туров в избранном">0</span>
           </a>
         </div>
       </div>
@@ -77,7 +77,7 @@
   <main class="container my-5">
     <h1 class="h2 mb-4">Личный кабинет</h1>
 
-    <ul class="nav nav-tabs" id="accountTabs" role="tablist">
+    <ul class="nav nav-tabs" id="account-tabs" role="tablist">
       <li class="nav-item" role="presentation">
         <button class="nav-link active" id="tab-favorites" data-bs-toggle="tab" data-bs-target="#pane-favorites"
           type="button" role="tab" aria-controls="pane-favorites" aria-selected="true">Избранное</button>
@@ -95,12 +95,12 @@
     <div class="tab-content pt-4">
       <div class="tab-pane fade show active" id="pane-favorites" role="tabpanel" aria-labelledby="tab-favorites"
         tabindex="0">
-        <div class="alert alert-primary d-none" role="alert" id="favoritesEmpty">
+        <div class="alert alert-primary d-none" role="alert" id="favorites-empty">
           В избранном пока пусто. <a class="alert-link" href="tours.html">Выберите тур в каталоге</a>
           и нажмите «В избранное».
         </div>
 
-        <div class="row g-4" id="favoritesList"></div>
+        <div class="row g-4" id="favorites-list"></div>
       </div>
 
       <div class="tab-pane fade" id="pane-orders" role="tabpanel" aria-labelledby="tab-orders" tabindex="0">
@@ -144,17 +144,16 @@
             </tbody>
           </table>
         </div>
-        <p class="small text-body-secondary mb-0">Заявки в таблице учебные.</p>
       </div>
 
       <div class="tab-pane fade" id="pane-profile" role="tabpanel" aria-labelledby="tab-profile" tabindex="0">
         <div class="row">
           <div class="col-12 col-lg-8">
-            <div class="alert alert-success d-none" role="alert" id="profileSuccess">
+            <div class="alert alert-success d-none" role="alert" id="profile-success">
               Данные профиля сохранены.
             </div>
 
-            <form id="profileForm" class="js-form" data-success="profileSuccess" data-keep novalidate>
+            <form id="profile-form" class="js-form" data-success="profile-success" data-keep novalidate>
               <div class="row g-3">
                 <div class="col-12 col-md-6">
                   <label for="profile-name" class="form-label">Имя *</label>
@@ -175,7 +174,7 @@
                   <div class="input-group">
                     <span class="input-group-text">+7</span>
                     <input id="profile-phone" name="phone" type="tel" class="form-control"
-                      placeholder="900 000-00-00">
+                      placeholder="912 345-67-89">
                   </div>
                 </div>
 
@@ -186,7 +185,7 @@
 
                 <div class="col-12">
                   <div class="form-check">
-                    <input id="profile-news" class="form-check-input" type="checkbox">
+                    <input id="profile-news" name="news" class="form-check-input" type="checkbox">
                     <label class="form-check-label" for="profile-news">
                       Получать новости о горящих турах
                     </label>
@@ -249,10 +248,10 @@
         <div class="col-12 col-md-6 col-lg-4">
           <h2 class="h6 text-uppercase">Контакты</h2>
           <address class="mb-0 text-white-50">
-            г. Москва, ул. Примерная, д. 1, офис 10<br>
-            Телефон: <a class="link-light link-underline-opacity-0" href="tel:+79000000000">+7 (900) 000-00-00</a><br>
+            г. Москва, ул. Новый Арбат, д. 15, офис 301<br>
+            Телефон: <a class="link-light link-underline-opacity-0" href="tel:+74951234567">+7 (495) 123-45-67</a><br>
             E-mail: <a class="link-light link-underline-opacity-0"
-              href="mailto:info@rosa-vetrov.example">info@rosa-vetrov.example</a><br>
+              href="mailto:info@rosavetrov.ru">info@rosavetrov.ru</a><br>
             Пн-Пт: 10:00-19:00, Сб: 11:00-16:00, Вс: выходной
           </address>
         </div>
@@ -262,22 +261,26 @@
 
       <div class="d-flex flex-column flex-md-row justify-content-between gap-2 small text-white-50">
         <span>&copy; 2026 Турагентство «Роза ветров». Все права защищены.</span>
-        <span>Учебный проект: Корабельников Глеб, группа ЭФБО-07-25</span>
+        <span>Свяжитесь с нами если возникли вопросы.</span>
       </div>
     </div>
   </footer>
 
   <!-- Модальное окно «Вопрос менеджеру», общее для всех страниц -->
-  <div class="modal fade" id="managerModal" tabindex="-1" aria-labelledby="managerModalLabel" aria-hidden="true">
+  <div class="modal fade" id="manager-modal" tabindex="-1" aria-labelledby="manager-modal-label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h2 class="modal-title h5" id="managerModalLabel">Вопрос менеджеру</h2>
+          <h2 class="modal-title h5" id="manager-modal-label">Вопрос менеджеру</h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
         </div>
 
-        <form id="managerForm" novalidate>
+        <form id="manager-form" class="js-form" data-success="manager-success" novalidate>
           <div class="modal-body">
+            <div class="alert alert-success d-none" role="alert" id="manager-success">
+              Спасибо! Вопрос отправлен, менеджер ответит вам на e-mail.
+            </div>
+
             <p class="text-body-secondary">
               Напишите, что хотите уточнить, и менеджер ответит в рабочее время.
             </p>
@@ -303,7 +306,7 @@
             </div>
 
             <div class="form-check">
-              <input id="manager-agree" class="form-check-input" type="checkbox" required>
+              <input id="manager-agree" name="agree" class="form-check-input" type="checkbox" required>
               <label class="form-check-label" for="manager-agree">
                 Согласен на обработку данных *
               </label>
@@ -317,17 +320,11 @@
           </div>
         </form>
 
-        <div class="modal-body d-none" id="managerSuccess">
-          <div class="alert alert-success mb-3" role="alert">
-            Спасибо! Вопрос отправлен, менеджер ответит вам на e-mail.
-          </div>
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Закрыть</button>
-        </div>
       </div>
     </div>
   </div>
 
-  <a class="to-top" href="#" id="toTop" aria-label="Наверх" title="Наверх">&uarr;</a>
+  <a class="to-top" href="#" aria-label="Наверх" title="Наверх">&uarr;</a>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
