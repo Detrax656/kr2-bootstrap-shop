@@ -24,7 +24,7 @@ const TOURS = {
       'Дни 6-7: свободные дни, по желанию экскурсия в Чичен-Ицу',
       'День 8: выселение и вылет домой'
     ],
-    images: ['images/placeholder.jpg', 'images/placeholder2.jpg', 'images/placeholder.jpg']
+    images: ['images/cancun.jpg', 'images/cancun-2.jpg']
   },
 
   'mexico-city': {
@@ -47,7 +47,7 @@ const TOURS = {
       'Дни 5-6: свободное время и покупки',
       'День 7: вылет домой'
     ],
-    images: ['images/placeholder2.jpg', 'images/placeholder.jpg', 'images/placeholder2.jpg']
+    images: ['images/teotiucan-mexiko.jpg', 'images/teotiucan-mexiko-2.jpg']
   },
 
   'oaxaca': {
@@ -70,7 +70,7 @@ const TOURS = {
       'День 5: свободный день и дегустация мескаля',
       'День 6: вылет домой'
     ],
-    images: ['images/placeholder.jpg', 'images/placeholder2.jpg', 'images/placeholder.jpg']
+    images: ['images/oahaka.jpg', 'images/oahaka-2.jpg']
   },
 
   'tulum': {
@@ -92,7 +92,7 @@ const TOURS = {
       'Дни 5-8: отдых на пляже и свободные дни',
       'День 9: вылет домой'
     ],
-    images: ['images/placeholder2.jpg', 'images/placeholder.jpg', 'images/placeholder2.jpg']
+    images: ['images/tutlum-reviera.jpg', 'images/tutlum-reviera-2.jpg']
   },
 
   'yucatan': {
@@ -115,7 +115,7 @@ const TOURS = {
       'Дни 6-7: отдых и покупки',
       'День 8: вылет домой'
     ],
-    images: ['images/placeholder.jpg', 'images/placeholder2.jpg', 'images/placeholder.jpg']
+    images: ['images/ukatan-chichen-ica.jpg', 'images/ukatan-chichen-ica-2.jpg']
   },
 
   'chiapas': {
@@ -138,15 +138,13 @@ const TOURS = {
       'Дни 5-6: водопады и свободное время',
       'День 7: вылет домой'
     ],
-    images: ['images/placeholder2.jpg', 'images/placeholder.jpg', 'images/placeholder2.jpg']
+    images: ['images/chyapas.jpg', 'images/chyapas-2.jpg']
   }
 };
 
-// Параметры из адреса страницы.
 const params = new URLSearchParams(window.location.search);
 
 function formatPrice(value) {
-  // toLocaleString('ru-RU') сам расставляет пробелы между тысячами.
   return Number(value).toLocaleString('ru-RU') + ' ₽';
 }
 
@@ -161,7 +159,7 @@ if (toTopButton) {
   window.addEventListener('scroll', () => {
     // window.scrollY — сколько пикселей страница уже прокручена вниз.
     // Если больше 300, добавляем класс to-top--visible,
-    // если меньше — убираем его
+    // если меньше — убираем
     toTopButton.classList.toggle('to-top--visible', window.scrollY > 300);
   });
 }
@@ -273,8 +271,6 @@ if (tourTitle) {
    5. Избранные туры (localStorage)
    =============================== */
 
-
-// Название «ячейки» в хранилище
 const FAVORITES_KEY = 'rosa-vetrov-favorites';
 
 function getFavorites() {
@@ -302,7 +298,6 @@ function updateFavoritesCount() {
   const counter = document.getElementById('favorites-count');
 
   if (counter) {
-    // length — сколько туров лежит в списке.
     counter.textContent = getFavorites().length;
   }
 }
@@ -313,13 +308,10 @@ function updateFavoriteButton(button) {
   button.innerHTML = active ? '&#9829; В избранном' : '&#9825; В избранное';
 
   button.classList.toggle('active', active);
-
-  button.setAttribute('aria-pressed', active);
 }
 
 const favoriteButtons = document.querySelectorAll('.favorite-btn');
 
-// Для каждой кнопки по очереди выполняем код внутри.
 favoriteButtons.forEach((button) => {
   // При загрузке страницы сразу показываем правильный вид кнопки.
   updateFavoriteButton(button);
@@ -343,13 +335,11 @@ favoriteButtons.forEach((button) => {
 
     saveFavorites(favorites);
 
-    // Обновляем кнопку и цифру в меню.
     updateFavoriteButton(button);
     updateFavoritesCount();
   });
 });
 
-// При загрузке любой страницы показываем актуальную цифру в меню.
 updateFavoritesCount();
 
 
@@ -464,7 +454,6 @@ if (filterForm) {
     filterForm.elements['date'].value = params.get('date');
   }
 
-  // Применяем фильтр сразу при загрузке страницы.
   applyFilter();
 }
 

@@ -10,7 +10,7 @@ Bootstrap 5.3.3.
 
 ## Способ подключения
 
-Bootstrap подключён через CDN (jsDelivr): файл стилей в `<head>`, скрипт `bootstrap.bundle.min.js` перед закрывающим `</body>`. Собственные стили лежат в `css/custom.css`.
+Bootstrap подключён через CDN (jsDelivr). Собственные стили лежат в `css/custom.css`.
 
 ## Структура проекта
 
