@@ -274,3 +274,16 @@ html {
   opacity: 1;
   visibility: visible;
 }
+
+.to-top__icon {
+  display: block;
+}
+
+
+/* ===============================
+   5. Иконки
+   =============================== */
+
+.icon-primary {
+  color: var(--color-primary);
+}
