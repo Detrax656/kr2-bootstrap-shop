@@ -63,12 +63,12 @@
 
         <div class="d-flex flex-column flex-lg-row gap-2">
           <button class="btn btn-outline-light" type="button" data-bs-toggle="modal"
-            data-bs-target="#manager-modal">
+            data-bs-target="#manager-modal" data-bs-title="Ответим в рабочее время" data-bs-placement="bottom">
             Вопрос менеджеру
           </button>
-          <a class="btn btn-primary" href="account.html">
+          <a class="btn btn-primary" href="account.html" data-bs-title="Избранные туры и мои заявки" data-bs-placement="bottom">
             Личный кабинет
-            <span class="badge text-bg-light" id="favorites-count" title="Туров в избранном">0</span>
+            <span class="badge text-bg-light" id="favorites-count" data-bs-title="Туров в избранном">0</span>
           </a>
         </div>
       </div>
@@ -155,7 +155,7 @@
                 </div>
 
                 <div class="col-12 col-md-6">
-                  <label for="booking-tour" class="form-label">Тур *</label>
+                  <label for="booking-tour" class="form-label" data-bs-title="Цена и дата вылета появятся справа в блоке «Ваш заказ»">Тур *</label>
                   <select id="booking-tour" name="tour" class="form-select" required>
                   <option value="">Выберите тур</option>
                   <option value="cancun">Канкун: пляжный отдых</option>
@@ -169,7 +169,7 @@
                 </div>
 
                 <div class="col-12 col-md-6">
-                  <label for="booking-guests" class="form-label">Количество гостей *</label>
+                  <label for="booking-guests" class="form-label" data-bs-title="От 1 до 6 человек, цена считается на каждого">Количество гостей *</label>
                   <select id="booking-guests" name="guests" class="form-select">
                     <option value="1">1 человек</option>
                     <option value="2" selected>2 человека</option>
@@ -186,7 +186,7 @@
                   <div class="form-check">
                     <input id="service-transfer" name="services" value="transfer" class="form-check-input service-check" type="checkbox"
                       data-price="3500" data-name="трансфер">
-                    <label class="form-check-label" for="service-transfer">
+                    <label class="form-check-label" for="service-transfer" data-bs-title="Встретим в аэропорту и отвезём в отель и обратно">
                       Трансфер из аэропорта и обратно, +3&nbsp;500 ₽
                     </label>
                   </div>
@@ -194,7 +194,7 @@
                   <div class="form-check">
                     <input id="service-insurance" name="services" value="insurance" class="form-check-input service-check" type="checkbox"
                       data-price="2800" data-name="страховка">
-                    <label class="form-check-label" for="service-insurance">
+                    <label class="form-check-label" for="service-insurance" data-bs-title="Покрывает медицинскую помощь во время поездки">
                       Медицинская страховка, +2&nbsp;800 ₽
                     </label>
                   </div>
@@ -202,7 +202,7 @@
                   <div class="form-check">
                     <input id="service-excursions" name="services" value="excursions" class="form-check-input service-check" type="checkbox"
                       data-price="7500" data-name="экскурсии">
-                    <label class="form-check-label" for="service-excursions">
+                    <label class="form-check-label" for="service-excursions" data-bs-title="Экскурсии по программе выбранного тура">
                       Пакет экскурсий, +7&nbsp;500 ₽
                     </label>
                   </div>
@@ -225,7 +225,7 @@
                 </div>
 
                 <div class="col-12 text-center">
-                  <button class="btn btn-outline-primary" type="submit">Оставить заявку</button>
+                  <button class="btn btn-outline-primary" type="submit">Отправить заявку</button>
                 </div>
               </div>
             </form>
@@ -301,9 +301,9 @@
               <li class="d-flex gap-2"><i class="bi bi-envelope-fill icon-primary" aria-hidden="true"></i><a class="link-light link-underline-opacity-0" href="mailto:info@rosavetrov.ru">info@rosavetrov.ru</a></li>
             </ul>
             <div class="d-flex gap-3 fs-5">
-              <a class="link-light link-underline-opacity-0" href="#" aria-label="Telegram" title="Telegram"><i class="bi bi-telegram"></i></a>
-              <a class="link-light link-underline-opacity-0" href="#" aria-label="ВКонтакте" title="ВКонтакте"><i class="bi bi-chat-dots-fill"></i></a>
-              <a class="link-light link-underline-opacity-0" href="#" aria-label="YouTube" title="YouTube"><i class="bi bi-youtube"></i></a>
+              <a class="link-light link-underline-opacity-0" href="#" aria-label="Telegram" data-bs-title="Telegram"><i class="bi bi-telegram"></i></a>
+              <a class="link-light link-underline-opacity-0" href="#" aria-label="ВКонтакте" data-bs-title="ВКонтакте"><i class="bi bi-chat-dots-fill"></i></a>
+              <a class="link-light link-underline-opacity-0" href="#" aria-label="YouTube" data-bs-title="YouTube"><i class="bi bi-youtube"></i></a>
             </div>
           </address>
         </div>
@@ -376,7 +376,7 @@
     </div>
   </div>
 
-  <a class="to-top" href="#" aria-label="Наверх" title="Наверх"><svg class="to-top__icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M11 2h2v2h-2zM9 4h6v2H9zM7 6h10v3H7zM5 9h14v3H5zM3 12h18v3H3zM1 15h22v3H1zM1 18h22v2H1z" transform="translate(0 1)"/></svg></a>
+  <a class="to-top" href="#" aria-label="Наверх" data-bs-title="Наверх" data-bs-placement="left"><svg class="to-top__icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M11 2h2v2h-2zM9 4h6v2H9zM7 6h10v3H7zM5 9h14v3H5zM3 12h18v3H3zM1 15h22v3H1zM1 18h22v2H1z" transform="translate(0 1)"/></svg></a>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -262,7 +262,8 @@ html {
   text-decoration: none;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s, visibility 0.3s, background-color 0.2s;
+  transform: translateY(1rem);
+  transition: opacity 0.3s, visibility 0.3s, transform 0.3s, background-color 0.2s;
 }
 
 .to-top:hover {
@@ -273,6 +274,17 @@ html {
 .to-top--visible {
   opacity: 1;
   visibility: visible;
+  transform: none;
+}
+
+.to-top:hover .to-top__icon {
+  animation: pyramid-jump 0.6s ease infinite;
+}
+
+@keyframes pyramid-jump {
+  50% {
+    transform: translateY(-4px);
+  }
 }
 
 .to-top__icon {
@@ -286,4 +298,101 @@ html {
 
 .icon-primary {
   color: var(--color-primary);
+}
+
+
+/* ===============================
+   6. Закреплённый фильтр каталога
+   =============================== */
+
+@media (min-width: 992px) {
+  .filter-card {
+    position: sticky;
+    top: 4.5rem;
+    z-index: 1020;
+  }
+}
+
+
+/* ===============================
+   7. Анимации
+   =============================== */
+
+/* Карточки: появление при прокрутке и подъём при наведении */
+.card.h-100 {
+  overflow: hidden;
+  transition: opacity 0.6s ease, translate 0.6s ease, transform 0.3s ease,
+    border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card.h-100:hover {
+  transform: translateY(-6px);
+  border-color: var(--color-primary);
+  box-shadow: 0 0.75rem 1.5rem rgba(var(--color-primary-rgb), 0.25) !important;
+}
+
+.card.h-100 .card-img-top {
+  transition: transform 0.4s ease;
+}
+
+.card.h-100:hover .card-img-top {
+  transform: scale(1.06);
+}
+
+.reveal {
+  opacity: 0;
+  translate: 0 1.5rem;
+}
+
+.reveal--visible {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* Кнопка «В избранное»: пульсация при добавлении */
+.favorite-btn--pulse {
+  animation: favorite-pulse 0.4s ease;
+}
+
+@keyframes favorite-pulse {
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    translate: none;
+  }
+
+  .card.h-100,
+  .card.h-100 .card-img-top,
+  .to-top {
+    transition: none;
+  }
+
+  .favorite-btn--pulse,
+  .to-top:hover .to-top__icon {
+    animation: none;
+  }
+}
+
+
+/* ===============================
+   8. Отзывы клиентов
+   =============================== */
+
+.reviews__item {
+  margin-left: 3.5rem;
+  margin-right: 3.5rem;
+}
+
+.reviews .carousel-control-prev,
+.reviews .carousel-control-next {
+  width: 3rem;
+}
+
+.reviews .carousel-indicators {
+  margin-bottom: 1rem;
 }

@@ -63,12 +63,12 @@
 
         <div class="d-flex flex-column flex-lg-row gap-2">
           <button class="btn btn-outline-light" type="button" data-bs-toggle="modal"
-            data-bs-target="#manager-modal">
+            data-bs-target="#manager-modal" data-bs-title="Ответим в рабочее время" data-bs-placement="bottom">
             Вопрос менеджеру
           </button>
-          <a class="btn btn-primary" href="account.html">
+          <a class="btn btn-primary" href="account.html" data-bs-title="Избранные туры и мои заявки" data-bs-placement="bottom">
             Личный кабинет
-            <span class="badge text-bg-light" id="favorites-count" title="Туров в избранном">0</span>
+            <span class="badge text-bg-light" id="favorites-count" data-bs-title="Туров в избранном">0</span>
           </a>
         </div>
       </div>
@@ -127,7 +127,7 @@
     <section class="container my-5" id="popular">
       <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="mb-0">Популярные направления</h2>
-        <a class="btn btn-outline-primary" href="tours.html">Все туры</a>
+        <a class="btn btn-outline-primary" href="tours.html" data-bs-title="Весь каталог туров">Все туры</a>
       </div>
 
       <div class="row g-4">
@@ -141,7 +141,7 @@
               </div>
               <p class="card-text">Белый песок, тёплое Карибское море и отель с питанием «всё включено».</p>
               <p class="fw-bold fs-5 mt-auto">от 145&nbsp;000 ₽</p>
-              <a class="btn btn-primary" href="tours.html?dest=cancun">Смотреть туры</a>
+              <a class="btn btn-primary" data-bs-title="Открыть туры по этому направлению" href="tours.html?dest=cancun">Смотреть туры</a>
             </div>
           </div>
         </div>
@@ -155,7 +155,7 @@
               </div>
               <p class="card-text">Столица Мексики, площадь Сокало, музеи и экскурсия к пирамидам Теотиуакана.</p>
               <p class="fw-bold fs-5 mt-auto">от 118&nbsp;000 ₽</p>
-              <a class="btn btn-primary" href="tours.html?dest=mexico-city">Смотреть туры</a>
+              <a class="btn btn-primary" data-bs-title="Открыть туры по этому направлению" href="tours.html?dest=mexico-city">Смотреть туры</a>
             </div>
           </div>
         </div>
@@ -169,7 +169,7 @@
               </div>
               <p class="card-text">Яркие рынки, мастер-классы по местной кухне и знакомство с традиционными ремёслами.</p>
               <p class="fw-bold fs-5 mt-auto">от 98&nbsp;000 ₽</p>
-              <a class="btn btn-primary" href="tours.html?dest=oaxaca">Смотреть туры</a>
+              <a class="btn btn-primary" data-bs-title="Открыть туры по этому направлению" href="tours.html?dest=oaxaca">Смотреть туры</a>
             </div>
           </div>
         </div>
@@ -218,6 +218,105 @@
       </div>
     </section>
 
+    <section class="container my-5" id="reviews">
+      <h2 class="text-center mb-4">Отзывы клиентов</h2>
+
+      <div id="reviews-carousel" class="carousel slide reviews col-12 col-lg-8 mx-auto" aria-label="Отзывы клиентов">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#reviews-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Отзыв 1"></button>
+          <button type="button" data-bs-target="#reviews-carousel" data-bs-slide-to="1" aria-label="Отзыв 2"></button>
+          <button type="button" data-bs-target="#reviews-carousel" data-bs-slide-to="2" aria-label="Отзыв 3"></button>
+          <button type="button" data-bs-target="#reviews-carousel" data-bs-slide-to="3" aria-label="Отзыв 4"></button>
+          <button type="button" data-bs-target="#reviews-carousel" data-bs-slide-to="4" aria-label="Отзыв 5"></button>
+          <button type="button" data-bs-target="#reviews-carousel" data-bs-slide-to="5" aria-label="Отзыв 6"></button>
+        </div>
+
+        <div class="carousel-inner">
+        <div class="carousel-item active">
+          <figure class="reviews__item p-4 pb-5 border rounded section-dark text-center mb-0">
+            <div class="text-warning mb-3" role="img" aria-label="Оценка: 5 из 5"><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i></div>
+            <blockquote class="mb-3">
+              <p class="mb-0">«Отдыхали в Канкуне всей семьёй. Отель, трансфер и прогулка на лодке были организованы без единой накладки, менеджер отвечал на вопросы даже вечером.»</p>
+            </blockquote>
+            <figcaption>
+              <span class="fw-bold">Анна К.</span>
+              <span class="d-block small text-body-secondary">Тур: Канкун: пляжный отдых</span>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="carousel-item">
+          <figure class="reviews__item p-4 pb-5 border rounded section-dark text-center mb-0">
+            <div class="text-warning mb-3" role="img" aria-label="Оценка: 5 из 5"><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i></div>
+            <blockquote class="mb-3">
+              <p class="mb-0">«Очень насыщенная программа. Экскурсия к пирамидам Теотиуакана стала лучшим днём поездки, а гид рассказывал интересно и без спешки.»</p>
+            </blockquote>
+            <figcaption>
+              <span class="fw-bold">Дмитрий С.</span>
+              <span class="d-block small text-body-secondary">Тур: Мехико и Теотиуакан</span>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="carousel-item">
+          <figure class="reviews__item p-4 pb-5 border rounded section-dark text-center mb-0">
+            <div class="text-warning mb-3" role="img" aria-label="Оценка: 5 из 5"><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i></div>
+            <blockquote class="mb-3">
+              <p class="mb-0">«Мастер-класс по национальной кухне и местный рынок запомнились больше всего. Спасибо агентству за подбор такого необычного маршрута.»</p>
+            </blockquote>
+            <figcaption>
+              <span class="fw-bold">Елена М.</span>
+              <span class="d-block small text-body-secondary">Тур: Оахака: культура и кухня</span>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="carousel-item">
+          <figure class="reviews__item p-4 pb-5 border rounded section-dark text-center mb-0">
+            <div class="text-warning mb-3" role="img" aria-label="Оценка: 4 из 5"><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star" aria-hidden="true"></i></div>
+            <blockquote class="mb-3">
+              <p class="mb-0">«Руины Тулума у самого моря и купание в сеноте, это стоило поездки. Единственное пожелание: хотелось бы чуть больше свободного времени.»</p>
+            </blockquote>
+            <figcaption>
+              <span class="fw-bold">Игорь П.</span>
+              <span class="d-block small text-body-secondary">Тур: Тулум и Ривьера-Майя</span>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="carousel-item">
+          <figure class="reviews__item p-4 pb-5 border rounded section-dark text-center mb-0">
+            <div class="text-warning mb-3" role="img" aria-label="Оценка: 5 из 5"><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i></div>
+            <blockquote class="mb-3">
+              <p class="mb-0">«Увидели пирамиду Кукулькана своими глазами. Все переезды были удобными, а при оформлении заявки сразу добавили страховку и экскурсии.»</p>
+            </blockquote>
+            <figcaption>
+              <span class="fw-bold">Мария Л.</span>
+              <span class="d-block small text-body-secondary">Тур: Юкатан: Мерида и Чичен-Ица</span>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="carousel-item">
+          <figure class="reviews__item p-4 pb-5 border rounded section-dark text-center mb-0">
+            <div class="text-warning mb-3" role="img" aria-label="Оценка: 5 из 5"><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i></div>
+            <blockquote class="mb-3">
+              <p class="mb-0">«Каньон Сумидеро и горный Сан-Кристобаль впечатлили. Для любителей природы и спокойных прогулок этот тур подходит идеально.»</p>
+            </blockquote>
+            <figcaption>
+              <span class="fw-bold">Сергей В.</span>
+              <span class="d-block small text-body-secondary">Тур: Чьяпас: джунгли и каньон</span>
+            </figcaption>
+          </figure>
+        </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#reviews-carousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Предыдущий отзыв</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#reviews-carousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Следующий отзыв</span>
+        </button>
+      </div>
+    </section>
+
     <section class="container my-5">
       <div class="p-4 p-md-5 border rounded text-center section-dark">
         <h2 class="h3">Остались вопросы?</h2>
@@ -225,7 +324,7 @@
           Напишите менеджеру, и мы подскажем, какой тур подойдёт именно вам.
         </p>
         <button class="btn btn-accent btn-lg" type="button" data-bs-toggle="modal"
-          data-bs-target="#manager-modal">
+          data-bs-target="#manager-modal" data-bs-title="Откроется форма вопроса">
           Задать вопрос
         </button>
       </div>
@@ -269,9 +368,9 @@
               <li class="d-flex gap-2"><i class="bi bi-envelope-fill icon-primary" aria-hidden="true"></i><a class="link-light link-underline-opacity-0" href="mailto:info@rosavetrov.ru">info@rosavetrov.ru</a></li>
             </ul>
             <div class="d-flex gap-3 fs-5">
-              <a class="link-light link-underline-opacity-0" href="#" aria-label="Telegram" title="Telegram"><i class="bi bi-telegram"></i></a>
-              <a class="link-light link-underline-opacity-0" href="#" aria-label="ВКонтакте" title="ВКонтакте"><i class="bi bi-chat-dots-fill"></i></a>
-              <a class="link-light link-underline-opacity-0" href="#" aria-label="YouTube" title="YouTube"><i class="bi bi-youtube"></i></a>
+              <a class="link-light link-underline-opacity-0" href="#" aria-label="Telegram" data-bs-title="Telegram"><i class="bi bi-telegram"></i></a>
+              <a class="link-light link-underline-opacity-0" href="#" aria-label="ВКонтакте" data-bs-title="ВКонтакте"><i class="bi bi-chat-dots-fill"></i></a>
+              <a class="link-light link-underline-opacity-0" href="#" aria-label="YouTube" data-bs-title="YouTube"><i class="bi bi-youtube"></i></a>
             </div>
           </address>
         </div>
@@ -344,7 +443,7 @@
     </div>
   </div>
 
-  <a class="to-top" href="#" aria-label="Наверх" title="Наверх"><svg class="to-top__icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M11 2h2v2h-2zM9 4h6v2H9zM7 6h10v3H7zM5 9h14v3H5zM3 12h18v3H3zM1 15h22v3H1zM1 18h22v2H1z" transform="translate(0 1)"/></svg></a>
+  <a class="to-top" href="#" aria-label="Наверх" data-bs-title="Наверх" data-bs-placement="left"><svg class="to-top__icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M11 2h2v2h-2zM9 4h6v2H9zM7 6h10v3H7zM5 9h14v3H5zM3 12h18v3H3zM1 15h22v3H1zM1 18h22v2H1z" transform="translate(0 1)"/></svg></a>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

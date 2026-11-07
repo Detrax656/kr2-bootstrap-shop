@@ -208,6 +208,9 @@ jsForms.forEach((form) => {
 
     message.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
+    // Сообщаем остальному коду, что форма заполнена верно (до очистки полей)
+    form.dispatchEvent(new CustomEvent('form:valid'));
+
     if (!form.hasAttribute('data-keep')) {
       form.reset();
 
@@ -337,6 +340,13 @@ favoriteButtons.forEach((button) => {
 
     updateFavoriteButton(button);
     updateFavoritesCount();
+
+    // Анимация пульсации при добавлении в избранное
+    if (isFavorite(id)) {
+      button.classList.remove('favorite-btn--pulse');
+      void button.offsetWidth;
+      button.classList.add('favorite-btn--pulse');
+    }
   });
 });
 
@@ -388,6 +398,45 @@ if (favoritesList) {
   });
 
   renderFavorites();
+}
+
+
+/* ===============================
+   6.1. Заявки (localStorage)
+   =============================== */
+
+const ORDERS_KEY = 'rosa-vetrov-orders';
+
+function getOrders() {
+  const saved = localStorage.getItem(ORDERS_KEY);
+
+  return saved ? JSON.parse(saved) : [];
+}
+
+function saveOrders(list) {
+  localStorage.setItem(ORDERS_KEY, JSON.stringify(list));
+}
+
+// Личный кабинет: таблица «Мои заявки»
+const ordersList = document.getElementById('orders-list');
+
+if (ordersList) {
+  const orders = getOrders();
+
+  document.getElementById('orders-empty').classList.toggle('d-none', orders.length !== 0);
+  document.getElementById('orders-wrap').classList.toggle('d-none', orders.length === 0);
+
+  ordersList.innerHTML = orders.map((order, index) => `
+    <tr>
+      <th scope="row">${index + 1}</th>
+      <td>${order.tour}<span class="d-block small text-body-secondary">от ${order.created}</span></td>
+      <td>${order.date}</td>
+      <td>${order.guests}</td>
+      <td>${order.services}</td>
+      <td class="text-nowrap">${formatPrice(order.total)}</td>
+      <td><span class="badge bg-warning text-dark">На рассмотрении</span></td>
+    </tr>
+  `).join('');
 }
 
 
@@ -493,10 +542,67 @@ if (bookingForm) {
       serviceNames.length > 0 ? serviceNames.join(', ') : 'нет';
 
     // Итог: (цена тура + цены услуг) умножить на число гостей.
-    document.getElementById('sum-total').textContent = formatPrice((tourPrice + servicesPrice) * guests);
+    const total = (tourPrice + servicesPrice) * guests;
+
+    document.getElementById('sum-total').textContent = formatPrice(total);
+
+    // Запоминаем текущий заказ, чтобы сохранить его при отправке формы.
+    currentOrder = {
+      tour: tour ? tour.title : '',
+      date: tour ? tour.date : '',
+      guests: guests,
+      services: serviceNames.length > 0 ? serviceNames.join(', ') : 'нет',
+      total: total
+    };
   }
+
+  let currentOrder = null;
+
+  // Форма заполнена верно: сохраняем заявку в localStorage.
+  bookingForm.addEventListener('form:valid', () => {
+    const orders = getOrders();
+
+    orders.push({ ...currentOrder, created: new Date().toLocaleDateString('ru-RU') });
+    saveOrders(orders);
+  });
 
   // Пересчитываем при любом изменении формы и один раз при загрузке страницы.
   bookingForm.addEventListener('change', updateSummary);
   updateSummary();
+}
+
+
+/* ===============================
+   9. Анимация появления карточек
+   =============================== */
+
+// Карточки плавно появляются, когда попадают в видимую часть экрана.
+const revealCards = document.querySelectorAll('main .card.h-100');
+
+if ('IntersectionObserver' in window && revealCards.length > 0) {
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('reveal--visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  revealCards.forEach((card) => {
+    card.classList.add('reveal');
+    revealObserver.observe(card);
+  });
+}
+
+
+/* ===============================
+   10. Подсказки (tooltip)
+   =============================== */
+
+// Подсказка включается там, где у элемента есть атрибут data-bs-title.
+if (typeof bootstrap !== 'undefined') {
+  document.querySelectorAll('[data-bs-title]').forEach((element) => {
+    new bootstrap.Tooltip(element);
+  });
 }
