@@ -39,7 +39,9 @@ Bootstrap подключён через CDN (jsDelivr). Собственные �
 - `nav-tabs`;
 - `carousel`;
 - `breadcrumb`;
-- `table`.
+- `table`;
+- `tooltip`;
+- `carousel` (отзывы клиентов на главной).
 
 ## Автор
 

@@ -50,6 +50,7 @@
               <li><a class="dropdown-item" href="tours.html?dest=tulum">Тулум</a></li>
               <li><a class="dropdown-item" href="tours.html?dest=yucatan">Юкатан</a></li>
               <li><a class="dropdown-item" href="tours.html?dest=chiapas">Чьяпас</a></li>
+              <li><a class="dropdown-item" href="tours.html?dest=guadalajara">Гвадалахара</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -78,7 +79,7 @@
   <main>
     <section class="hero container my-5">
       <div class="row align-items-center g-4">
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-6 hero__content">
           <h1 class="display-5 fw-bold">Мексика ждёт вас</h1>
           <p class="lead text-body-secondary">
             Турагентство «Роза ветров» организует поездки в Мексику: пляжи Карибского моря, пирамиды майя,
@@ -100,6 +101,7 @@
               <option value="tulum">Тулум и Ривьера-Майя</option>
               <option value="yucatan">Юкатан</option>
               <option value="chiapas">Чьяпас</option>
+              <option value="guadalajara">Гвадалахара</option>
                     </select>
                   </div>
 
@@ -218,10 +220,39 @@
       </div>
     </section>
 
+    <section class="container my-5" id="stats">
+      <div class="row g-4 text-center">
+        <div class="col-6 col-lg-3">
+          <div class="p-4 border rounded h-100 section-dark">
+            <p class="display-5 fw-bold mb-1"><span class="counter" data-target="7">7</span></p>
+            <p class="mb-0 text-body-secondary">направлений</p>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="p-4 border rounded h-100 section-dark">
+            <p class="display-5 fw-bold mb-1"><span class="counter" data-target="9">9</span></p>
+            <p class="mb-0 text-body-secondary">туров в каталоге</p>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="p-4 border rounded h-100 section-dark">
+            <p class="display-5 fw-bold mb-1"><span class="counter" data-target="1200">1200</span>+</p>
+            <p class="mb-0 text-body-secondary">довольных туристов</p>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="p-4 border rounded h-100 section-dark">
+            <p class="display-5 fw-bold mb-1"><span class="counter" data-target="10">10</span></p>
+            <p class="mb-0 text-body-secondary">лет на рынке</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="container my-5" id="reviews">
       <h2 class="text-center mb-4">Отзывы клиентов</h2>
 
-      <div id="reviews-carousel" class="carousel slide reviews col-12 col-lg-8 mx-auto" aria-label="Отзывы клиентов">
+      <div id="reviews-carousel" class="carousel slide reviews col-12 col-lg-8 mx-auto" data-bs-ride="carousel" data-bs-interval="6000" aria-label="Отзывы клиентов">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#reviews-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Отзыв 1"></button>
           <button type="button" data-bs-target="#reviews-carousel" data-bs-slide-to="1" aria-label="Отзыв 2"></button>

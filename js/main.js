@@ -139,6 +139,71 @@ const TOURS = {
       'День 7: вылет домой'
     ],
     images: ['images/chyapas.jpg', 'images/chyapas-2.jpg']
+  },
+
+  'cancun-eco': {
+    id: 'cancun-eco',
+    title: 'Канкун: эконом-отдых',
+    badge: 'Выгодно',
+    badgeClass: 'bg-danger',
+    days: 6,
+    date: '10.02.2027',
+    price: 89000,
+    seats: 9,
+    text: 'Бюджетный отдых на Карибском море: отель с завтраками и пляж в нескольких минутах от номера.',
+    description: 'Выгодная версия пляжного отдыха в Канкуне. Вы поселитесь в отеле с завтраками рядом с морем, а в остальное время сами решаете, чем заняться: пляж, прогулки по городу или экскурсия за отдельную плату.',
+    program: [
+      'День 1: прилёт в Канкун и заселение в отель',
+      'Дни 2-3: отдых на пляже, свободное время',
+      'День 4: прогулка по набережной и ужин в городе',
+      'День 5: свободный день, по желанию экскурсия',
+      'День 6: выселение и вылет домой'
+    ],
+    images: ['images/cancun-eco.jpg', 'images/cancun-eco-2.jpg']
+  },
+
+  'guadalajara': {
+    id: 'guadalajara',
+    title: 'Гвадалахара и Текила',
+    badge: 'Новинка',
+    badgeClass: 'bg-success',
+    days: 7,
+    date: '14.03.2027',
+    price: 167000,
+    seats: 6,
+    text: 'Родина мариачи и текилы: исторический центр Гвадалахары, город Текила и дегустация на ферме агавы.',
+    description: 'Тур для тех, кто хочет узнать Мексику с неожиданной стороны. Вы увидите исторический центр Гвадалахары, побываете в городе Текила и узнаете, как делают национальный напиток.',
+    program: [
+      'День 1: прилёт в Гвадалахару и заселение в отель',
+      'День 2: обзорная экскурсия по историческому центру и кафедральному собору',
+      'День 3: рынок, мастер-класс по местной кухне и вечер с мариачи',
+      'День 4: поездка в город Текила, ферма агавы и дегустация',
+      'День 5: ремесленный квартал Тлакепаке и свободное время',
+      'День 6: свободный день и покупки',
+      'День 7: вылет домой'
+    ],
+    images: ['images/guadalajara.jpg', 'images/guadalajara-2.jpg']
+  },
+
+  'mexico-city-weekend': {
+    id: 'mexico-city-weekend',
+    title: 'Мехико: выходные в столице',
+    badge: 'Выгодно',
+    badgeClass: 'bg-danger',
+    days: 5,
+    date: '25.02.2027',
+    price: 84000,
+    seats: 10,
+    text: 'Короткая поездка в столицу: Ангел Независимости, площадь Сокало и Метрополитанский собор.',
+    description: 'Компактная версия поездки в Мехико для тех, у кого мало времени. За пять дней вы успеете увидеть главные места столицы, сходить в музей и спокойно погулять по центру.',
+    program: [
+      'День 1: прилёт в Мехико и заселение в отель',
+      'День 2: обзорная экскурсия: проспект Реформа, Ангел Независимости, площадь Сокало и Метрополитанский собор',
+      'День 3: Национальный музей антропологии и парк Чапультепек',
+      'День 4: свободный день и покупки',
+      'День 5: вылет домой'
+    ],
+    images: ['images/mexico-city-weekend.jpg', 'images/mexico-city-weekend-2.jpg']
   }
 };
 
@@ -305,6 +370,17 @@ function updateFavoritesCount() {
   }
 }
 
+// Небольшая анимация цифры рядом с кнопкой «Личный кабинет».
+function bumpFavoritesCount() {
+  const counter = document.getElementById('favorites-count');
+
+  if (counter) {
+    counter.classList.remove('badge--bump');
+    void counter.offsetWidth;
+    counter.classList.add('badge--bump');
+  }
+}
+
 function updateFavoriteButton(button) {
   const active = isFavorite(button.dataset.id);
 
@@ -340,6 +416,7 @@ favoriteButtons.forEach((button) => {
 
     updateFavoriteButton(button);
     updateFavoritesCount();
+    bumpFavoritesCount();
 
     // Анимация пульсации при добавлении в избранное
     if (isFavorite(id)) {
@@ -395,6 +472,7 @@ if (favoritesList) {
     saveFavorites(getFavorites().filter((tour) => tour.id !== button.dataset.id));
     renderFavorites();
     updateFavoritesCount();
+    bumpFavoritesCount();
   });
 
   renderFavorites();
@@ -452,7 +530,7 @@ if (filterForm) {
   const emptyMessage = document.getElementById('empty-message');
   const foundCount = document.getElementById('found-count');
 
-  function applyFilter() {
+  function applyFilter(animate) {
     const dest = filterForm.elements['dest'].value;
     const date = filterForm.elements['date'].value;
     const maxPrice = filterForm.elements['price'].value;
@@ -475,6 +553,13 @@ if (filterForm) {
 
       if (visible) {
         found++;
+
+        // Плавное появление подходящих туров после фильтрации
+        if (animate) {
+          item.classList.remove('tour-item--fade');
+          void item.offsetWidth;
+          item.classList.add('tour-item--fade');
+        }
       }
     });
 
@@ -485,14 +570,12 @@ if (filterForm) {
 
   filterForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    applyFilter();
+    applyFilter(true);
   });
-
-  filterForm.addEventListener('change', applyFilter);
 
   document.getElementById('filter-reset').addEventListener('click', () => {
     filterForm.reset();
-    applyFilter();
+    applyFilter(true);
   });
 
   if (params.get('dest')) {
@@ -604,5 +687,49 @@ if ('IntersectionObserver' in window && revealCards.length > 0) {
 if (typeof bootstrap !== 'undefined') {
   document.querySelectorAll('[data-bs-title]').forEach((element) => {
     new bootstrap.Tooltip(element);
+  });
+}
+
+
+/* ===============================
+   11. Счётчики на главной
+   =============================== */
+
+const counters = document.querySelectorAll('.counter');
+
+// Число плавно «досчитывается» от 0 до значения из data-target.
+function animateCounter(element) {
+  const target = Number(element.dataset.target);
+  const duration = 1500;
+  const start = performance.now();
+
+  function step(now) {
+    const progress = Math.min((now - start) / duration, 1);
+
+    element.textContent = Math.round(target * progress);
+
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    }
+  }
+
+  requestAnimationFrame(step);
+}
+
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if ('IntersectionObserver' in window && !reduceMotion && counters.length > 0) {
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach((counter) => {
+    counter.textContent = '0';
+    counterObserver.observe(counter);
   });
 }
